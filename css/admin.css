@@ -1,0 +1,897 @@
+/* ------------ STYLE CSS OF ADMIN PAGE ---------- */
+#app {
+  width: 100%;
+  background-color: var(--main-background);
+}
+
+#app .bg-overlay {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: none;
+}
+
+/* ------------ STYLE CSS OF SIDEBAR ---------- */
+#header {
+  display: none;
+  height: 60px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--main-background);
+  box-shadow: var(--shadown-card);
+  padding: 12px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 20;
+}
+
+#header img {
+  height: 100px;
+  object-fit: cover;
+}
+
+#header .menu__btn {
+  height: 100%;
+  border: none;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: 60px;
+  cursor: pointer;
+}
+
+#header .menu__btn i {
+  font-size: 30px;
+}
+/* ------------ STYLE CSS OF SIDEBAR ---------- */
+#app #sidebar {
+  width: 280px;
+  height: 100vh;
+  background-color: var(--suface-background);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.3);
+  padding: var(--gap-base);
+  overflow: hidden;
+  transition: all 0.3s linear;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 40;
+}
+
+#sidebar .close__menu {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  font-size: 25px;
+  border: none;
+  outline: none;
+  color: var(--text-primary-color);
+}
+
+#sidebar #sidebar__top .logo {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: var(--gap-lg);
+  margin-bottom: var(--gap-base);
+  overflow: hidden;
+}
+
+#sidebar #sidebar__top .logo span {
+  color: var(--text-primary-color);
+}
+
+#sidebar #sidebar__top .logo i {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+#sidebar #sidebar__top .nav {
+  list-style: none;
+}
+
+#sidebar #sidebar__top .nav .nav__link {
+  cursor: pointer;
+  margin-bottom: var(--gap-lg);
+  display: flex;
+  justify-content: start;
+  align-items: end;
+  gap: var(--gap-sm);
+  flex-wrap: nowrap;
+  overflow: hidden;
+  color: var(--text-primary-color);
+}
+
+#sidebar #sidebar__top .nav .nav__link:hover {
+  color: var(--priamry-color);
+  font-weight: 900;
+}
+
+#logout {
+  display: flex;
+  justify-items: start;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  color: var(--text-primary-color);
+}
+
+#btn__mode {
+  padding: 8px 12px;
+  color: var(--text-primary-color);
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: var(--suface-background);
+  box-shadow: var(--shadown-card);
+}
+
+/* #sidebar #sidebar__top .nav .nav__link span {
+  color: var(--text-primary-color);
+} */
+
+/* ------------ STYLE CSS OF CONTENT ---------- */
+#app #content {
+  margin-left: 280px;
+  width: calc(100% - 280px);
+  padding: var(--gap-base);
+  transition: all 0.3s linear;
+  background-color: var(--main-background);
+}
+
+#content .page {
+  width: 100%;
+  min-height: calc(100vh - var(--gap-base));
+  height: max-content;
+  border-bottom: 1px solid #000;
+  display: none;
+}
+
+/* --------- SECTION HOME CSS ---------- */
+#content #home {
+}
+
+#home .time .input__date {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: max-content;
+}
+
+#home .time .input__date input {
+  color: var(--text-primary-color);
+}
+
+#home .time {
+  margin: var(--gap-base) 0;
+}
+
+#home .time #btn__stats {
+  background-color: var(--priamry-color);
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  margin: var(--gap-base) 0;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+#home .time #btn__stats:hover {
+  box-shadow: var(--shadown-card);
+  transform: translate(-2px, -2px);
+  transition: all 0.2s ease-in;
+}
+
+#home .time .input__date:first-child {
+  margin-bottom: var(--gap-lg);
+}
+
+#home .time .input__date label {
+  min-width: 12ch;
+  color: var(--text-primary-color);
+}
+
+#home .time .input__date input {
+  padding: 8px 12px;
+  width: 250px;
+  box-shadow: inset var(--shadown-card);
+  border-radius: 4px;
+  border: none;
+  background-color: var(--suface-background);
+  cursor: pointer;
+}
+
+#content #home .stats {
+  height: fit-content;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: var(--gap-base);
+  margin: var(--gap-base) 0;
+}
+
+#home .stats .stats__item {
+  width: 30%;
+  background-color: var(--suface-background);
+  color: var(--text-primary-color);
+  border-radius: 8px;
+  padding: var(--gap-base);
+  box-shadow: var(--shadown-card);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: inset var(--shadown-card);
+}
+
+#home .stats .stats__item .bg__hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  z-index: 0;
+  background-color: var(--priamry-color);
+  transition: all 0.3s linear;
+}
+
+#home .stats .stats__item > * {
+  position: relative;
+  z-index: 1;
+}
+
+#home .stats .stats__item:hover {
+  color: #fff;
+}
+
+#home .stats .stats__item:hover > .bg__hover {
+  width: 100%;
+  transition: all 0.3s linear;
+}
+
+#home .top__product .stats__heading,
+#home .top__user .stats__heading {
+  color: var(--text-primary-color);
+}
+
+#home .top__product .condition__compare label,
+#home .top__user .user__compare label {
+  color: var(--text-primary-color);
+}
+
+#list__order {
+  display: flex;
+  flex-direction: column;
+}
+
+#product__stats__modal {
+  overflow-y: scroll;
+}
+
+@media screen and (max-width: 600px) {
+  #home .stats .stats__item {
+    width: 100%;
+  }
+}
+
+/* --------- SECTION ORDER CSS ---------- */
+
+#order #order__filter {
+  margin: var(--gap-base) 0;
+}
+
+#order #order__filter .btn__filter {
+  padding: 8px 12px;
+  width: max-content;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: var(--suface-background);
+  border-radius: var(--gap-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap-xs);
+  cursor: pointer;
+  color: var(--text-primary-color);
+}
+
+#order #order__filter .btn__filter span {
+  font-weight: 500 !important;
+}
+
+/* OREDER LIST CSS */
+
+/* Status Badge */
+.order__list .order__table .status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+}
+
+.order__list .order__table .status.pending {
+  background-color: #f7a35c;
+}
+
+.order__list .order__table .status.complete {
+  background-color: #6cba81;
+}
+
+.order__list .order__table .status.cancel {
+  background-color: #aa82f1;
+}
+
+/* ORDER DETAIL CSS */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal p {
+  margin: 10px 0;
+}
+
+/* Status Badge */
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+}
+
+.status.pending {
+  background-color: #f7a35c;
+}
+
+.status.complete {
+  background-color: #6cba81;
+}
+
+.status.partially-received {
+  background-color: #aa82f1;
+}
+
+/* --------- SECTION WAREHOUSE CSS ---------- */
+#content #warehouse {
+}
+
+#warehouse #warehouse__list {
+}
+
+#warehouse #warehouse__list .table__col img {
+  height: 80px;
+  object-fit: cover;
+}
+
+/* --------- SECTION USERS CSS ---------- */
+/* --------- SECTION ADMIN CSS ---------- */
+#admin {
+}
+
+#admin .heading__admin {
+  color: var(--text-primary-color);
+  margin-bottom: var(--gap-base);
+}
+
+.info__admin .info__field {
+  color: var(--text-primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 20px;
+}
+
+.info__field label {
+  width: 10ch;
+}
+
+.info__field input {
+  padding: 4px 12px;
+  border: none;
+}
+
+/* --------- CLASS GLOBAL ---------- */
+
+.active__menu {
+  color: var(--priamry-color) !important;
+}
+.open__sidebar {
+  width: 80px !important;
+}
+
+.open__content {
+  width: calc(100% - 80px) !important;
+  margin-left: 80px !important;
+}
+
+.icon {
+  font-size: 30px;
+  color: inherit;
+}
+
+.open__filter {
+  top: 0 !important;
+}
+
+.page__show {
+  display: block !important;
+}
+
+.page__hidden {
+  display: none;
+}
+
+/* --------- CSS FOR COMPONENT ---------- */
+
+/* HEADING */
+
+.heading {
+  color: var(--text-primary-color);
+}
+
+/* TABLE */
+
+.table__container {
+  width: 100%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: var(--suface-background);
+  border-radius: 8px;
+  box-shadow: inset var(--shadown-table);
+}
+
+.table__container .table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.table .table__head {
+  background-color: var(--suface-background);
+}
+
+.table .table__row,
+.table .table__col {
+  padding: var(--gap-lg);
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.table .table__head .table__col {
+  color: var(--text-primary-color);
+  text-transform: uppercase;
+}
+
+.table .table__body .table__col {
+  font-size: 14px;
+  color: var(--text-secondary-color);
+}
+
+.table button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: var(--gap-lg);
+}
+
+.table img {
+  height: 100px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-left: var(--gap-lg);
+}
+
+.table button:hover {
+  transition: all 0.2s linear;
+  background-color: var(--priamry-color);
+}
+
+@media only screen and (max-width: 1024px) {
+  #app #sidebar {
+    position: fixed;
+    top: 0;
+    left: -110%;
+    bottom: 0;
+    z-index: 30;
+  }
+  #app #content {
+    margin: 60px 0 0;
+    width: 100%;
+  }
+  .open__content {
+    width: 100% !important;
+    margin-left: 0 !important ;
+  }
+  .table__container {
+    padding: 0;
+  }
+
+  .table .table__head {
+    display: none;
+  }
+  .table .table__row,
+  .table .table__col {
+    display: block;
+    border-bottom: none;
+  }
+
+  .table .table__row {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .table .table__col {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+  }
+
+  .table .table__col::before {
+    content: attr(data-cell);
+    width: 15ch;
+  }
+  .open__sidebar {
+    width: 280px !important;
+  }
+}
+
+/* Atcion component */
+
+.actions__component {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.actions__component .action__search {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  height: 100%;
+  background-color: var(--suface-background);
+  border-radius: var(--gap-xs);
+  overflow: hidden;
+  transition: all 0.2s linear;
+}
+
+.actions__component .action__search:hover {
+  transition: all 0.2s linear;
+  box-shadow: inset var(--shadown-table);
+}
+
+.actions__component .action__search input {
+  flex: 1;
+  height: 100%;
+  padding: 8px 12px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.actions__component .action__search .btn__search {
+  width: 60px;
+  height: 100%;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: var(--priamry-color);
+  color: #fff;
+}
+
+.actions__component .action__add {
+  height: 100%;
+}
+
+.actions__component .action__add .btn__add {
+  width: max-content;
+  height: 100%;
+  border-radius: var(--gap-xs);
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: var(--priamry-color);
+  color: #fff;
+  font-weight: 500 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-xs);
+  padding: 8px 12px;
+}
+
+/* Modal */
+.box-overlay {
+  position: fixed;
+  top: -110%;
+  left: 0;
+  z-index: 50;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in;
+  /* display: none; */
+}
+
+.box-overlay .box-model {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-model .box-container {
+  max-width: 800px;
+  width: 90%;
+  max-height: 600px;
+  height: 100%;
+  border-radius: 8px;
+  background-color: var(--suface-background);
+  padding: 16px;
+  overflow: hidden;
+  color: var(--text-primary-color);
+}
+
+.box-container .content .model__heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.box-container .content .model__heading button {
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  height: auto;
+  width: 60px;
+  cursor: pointer;
+}
+
+.box-container .content {
+  background-color: transparent;
+}
+
+.box-container .content .modal__form div {
+  display: flex;
+  justify-content: start;
+  margin-bottom: var(--gap-sm);
+}
+
+.box-container .content .modal__form div strong {
+  display: inline-block;
+  min-width: 20ch;
+}
+
+.box-container .content .modal__form div input {
+  display: inline-block;
+  padding: 8px 12px;
+  max-width: 300px;
+  flex: 1;
+  height: max-content;
+  border-radius: 4px;
+  border: none;
+  box-shadow: var(--shadown-card);
+}
+
+.box-container .content .modal__submit {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: var(--gap-lg);
+}
+
+.box-container .content .modal__submit .btn__submit {
+  min-width: 60px;
+  padding: 8px 16px;
+  width: max-content;
+  height: max-content;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: var(--priamry-color);
+  color: #fff;
+  border-radius: 8px;
+}
+/* Modal filter */
+#filter__modal .content {
+  color: var(--text-primary-color);
+}
+#filter__modal .content #filter__heading {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  margin-bottom: var(--gap-lg);
+}
+
+#filter__modal #filter__heading #filter__close {
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  height: 40px;
+  color: var(--text-primary-color);
+}
+
+#filter__modal #filter__form {
+  margin-bottom: var(--gap-lg);
+}
+
+#filter__modal #filter__form .modal__filter {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: var(--gap-sm);
+}
+
+#filter__form .modal__filter label {
+  min-width: 15ch;
+}
+
+/* Order detail */
+
+#order__form .list__product {
+  list-style: none;
+}
+
+#order__form .list__product .product__item {
+  height: max-content;
+  display: flex;
+  justify-content: start;
+  gap: var(--gap-base);
+  margin: var(--gap-lg) 0;
+}
+
+#order__form .list__product .product__item img {
+  height: 70px;
+  object-fit: cover;
+}
+
+#order__form .list__product .product__info {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  color: var(--text-primary-color);
+}
+
+#order__form .list__product .product__info p::before {
+  display: inline-block;
+  content: attr(data-lable);
+  width: 15ch;
+}
+
+#order__form .list__product .product__item button {
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  color: var(--text-primary-color);
+  cursor: pointer;
+  box-shadow: var(--shadown-card);
+  border: none;
+  border-radius: 4px;
+}
+
+#order__form .list__product .product__item button i {
+  color: var(--text-primary-color);
+}
+
+#order__form .list__product .product__item #order__modal #order__container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.box-model .box-container#order__container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#message__not__found {
+  color: var(--text-primary-color);
+  padding: var(--gap-base) 0;
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  #header {
+    display: flex;
+  }
+  #sidebar #sidebar__top .logo i {
+    display: none;
+  }
+  #app #sidebar .close__menu {
+    display: flex !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #order__form .list__product .product__item {
+    flex-direction: column;
+    align-items: start;
+    gap: 0;
+  }
+  .box-container .content .modal__form div {
+    flex-direction: column;
+    gap: var(--gap-lg);
+  }
+  .box-container .content .modal__submit {
+    flex-direction: row !important;
+  }
+  #filter__modal #filter__form .modal__filter {
+    align-items: start;
+  }
+}

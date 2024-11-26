@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/solid.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/admin.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- ==================== APP START ==================== -->
+    <div id="app">
+      <div class="bg-overlay"></div>
+      <!-- ==================== HEADER START ==================== -->
+      <header id="header">
+        <img src="../images/logo.png" alt="logo" />
+        <button class="menu__btn">
+          <i class="uis uis-bars"></i>
+        </button>
+      </header>
+      <!-- ==================== HEADER END ==================== -->
+      <!-- ==================== SIDEBAR START ==================== -->
+      <div id="sidebar">
+        <button class="close__menu">
+          <i class="uis uis-multiply"></i>
+        </button>
+        <div id="sidebar__top">
+          <div class="logo">
+            <i class="uis uis-bars icon" id="btn__nav"></i>
+            <span> IT BOOKS </span>
+          </div>
+          <ul class="nav">
+            <li class="nav__link active__menu" data-page="home">
+              <i class="uis uis-house-user icon"></i>
+              <span class="h6-medium">Trang chu</span>
+            </li>
+            <li class="nav__link" data-page="order">
+              <i class="uis uis-analytics icon"></i>
+              <span class="h6-medium">Danh sach order</span>
+            </li>
+            <li class="nav__link" data-page="warehouse">
+              <i class="uis uis-analytics icon"></i>
+              <span class="h6-medium">Danh sach san pham</span>
+            </li>
+            <li class="nav__link" data-page="users">
+              <i class="uis uis-analytics icon"></i>
+              <span class="h6-medium">Danh sach user</span>
+            </li>
+            <li class="nav__link" data-page="admin">
+              <i class="uis uis-analytics icon"></i>
+              <span class="h6-medium">Admin</span>
+            </li>
+          </ul>
+        </div>
+        <div id="sidebar__bottom">
+          <div id="logout" onclick="handleLogout()">
+            <i class="uis uis-signout icon"></i>
+            <span class="h6-medium">Dang xuat</span>
+          </div>
+          <button id="btn__mode">Change mode</button>
+        </div>
+      </div>
+      <!-- ==================== SIDEBAR END ==================== -->
+      <!-- ==================== CONTENT START ==================== -->
+      <main id="content">
+        <section class="page page__show" id="home">
+          <h1 class="heading h1-bold">DashBoard</h1>
+          <div class="time">
+            <div class="input__date body-1">
+              <label for="date__start">Ngay bat dau:</label>
+              <input type="date" id="date__start" />
+            </div>
+            <div class="input__date body-1">
+              <label for="date__end">Ngay ket thuc:</label>
+              <input type="date" id="date__end" />
+            </div>
+            <button id="btn__stats" onclick="handleStats()">Thong ke</button>
+          </div>
+          <ul class="stats">
+            <li class="stats__item" id="stats__product">
+              <div class="bg__hover"></div>
+              <p class="type h5-meidum">San pham</p>
+              <span class="quantity h2-bold">9000</span>
+              <span>cuon</span>
+            </li>
+            <li class="stats__item" id="stats__user">
+              <div class="bg__hover"></div>
+              <p class="type h5-meidum">Nguoi dung</p>
+              <span class="quantity h2-bold">3000</span>
+              <span>nguoi dung</span>
+            </li>
+            <li class="stats__item" id="stats__order">
+              <div class="bg__hover"></div>
+              <p class="type h5-meidum">Luot mua</p>
+              <span class="quantity h2-bold">10000</span>
+              <span>luot</span>
+            </li>
+            <li class="stats__item" id="stats__incom">
+              <div class="bg__hover"></div>
+              <p class="type h5-meidum">Doanh thu</p>
+              <span class="quantity h2-bold"></span>
+            </li>
+          </ul>
+          <div class="top__product">
+            <h4 class="stats__heading h3-semi-bold">Top Product</h4>
+            <div class="condition__compare">
+              <label for="product__condition">Xap sep theo</label>
+              <select name="product__condition" id="product__condition">
+                <option value="buy__max">Bán chạy</option>
+                <option value="buy__min">Bán ế</option>
+              </select>
+            </div>
+            <div id="statistics__product" class="table__container">
+              <table class="table">
+                <thead class="table__head">
+                  <tr class="table__row">
+                    <th class="table__col">Ảnh bìa</th>
+                    <th class="table__col">Tên sách</th>
+                    <th class="table__col">Giá</th>
+                    <th class="table__col">Số lượng đã bán</th>
+                    <th class="table__col">Doanh thu</th>
+                    <th class="table__col">Chi tiết</th>
+                  </tr>
+                </thead>
+                <tbody class="table__body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="top__user">
+            <h4 class="stats__heading h3-semi-bold">Top Product</h4>
+            <div class="user__compare">
+              <label for="user__condition">Xap sep theo</label>
+              <select name="user__condition" id="user__condition">
+                <option value="buy__max">Mua nhiều nhất</option>
+                <option value="buy__min">Mua ít nhất</option>
+              </select>
+            </div>
+            <div id="statistics__user" class="table__container">
+              <table class="table" id="table__user__top">
+                <thead class="table__head">
+                  <tr class="table__row">
+                    <th class="table__col">User ID</th>
+                    <th class="table__col">UserName</th>
+                    <th class="table__col">Email</th>
+                    <th class="table__col">Số điện thoại</th>
+                    <th class="table__col">Số lượng đã mua</th>
+                    <th class="table__col">Tổng tiền mua</th>
+                    <th class="table__col">Chi tiết</th>
+                  </tr>
+                </thead>
+                <tbody class="table__body"></tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Modal List order -->
+          <div class="box-overlay" id="product__stats__detail">
+            <div class="box-model">
+              <div class="box-container" id="product__stats__modal">
+                <div class="content">
+                  <div class="model__heading" id="order__heading">
+                    <h2 class="model__heading h2-bold">Product Stats Detail</h2>
+                    <button class="btn__close" id="order__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseProductStatsModal()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="product__stats__form">
+                    <div>
+                      <strong>ProductID:</strong
+                      ><span id="product__stats__id"></span>
+                    </div>
+                    <div>
+                      <strong>Tên sách: </strong
+                      ><span id="product__stats__title"></span>
+                    </div>
+
+                    <div>
+                      <strong>Đã bán:</strong>
+                      <span id="product__stats__bought"></span>
+                    </div>
+                    <div>
+                      <strong>Doanh thu:</strong>
+                      <span id="product__stats__income"></span>
+                    </div>
+                    <div id="list__order">
+                      <strong>List Order:</strong>
+                      <div id="order__product" class="table__container">
+                        <table class="table">
+                          <thead class="table__head">
+                            <tr class="table__row">
+                              <th class="table__col">OrderID</th>
+                              <th class="table__col">ProductID</th>
+                              <th class="table__col">UserID</th>
+                              <th class="table__col">Quantity</th>
+                              <th class="table__col">Thành Tiền</th>
+                            </tr>
+                          </thead>
+                          <tbody
+                            class="table__body"
+                            id="order__product__table"
+                          ></tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal List order -->
+          <div class="box-overlay" id="user__stats__detail">
+            <div class="box-model">
+              <div class="box-container" id="user__stats__modal">
+                <div class="content">
+                  <div class="model__heading" id="order__heading">
+                    <h2 class="model__heading h2-bold">List Order Of User</h2>
+                    <button class="btn__close" id="order__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseUserStatsModal()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div id="order__user" class="table__container">
+                    <table class="table">
+                      <thead class="table__head">
+                        <tr class="table__row">
+                          <th class="table__col">OrderID</th>
+                          <th class="table__col">ProductID</th>
+                          <th class="table__col">UserID</th>
+                          <th class="table__col">Quantity</th>
+                          <th class="table__col">Thành Tiền</th>
+                        </tr>
+                      </thead>
+                      <tbody
+                        class="table__body"
+                        id="order__user__table"
+                      ></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="page" id="order">
+          <h1 class="heading h1-bold">Danh sach order</h1>
+          <div id="order__actions" class="actions__component">
+            <div class="action__search" id="order__search">
+              <input type="text" placeholder="Nhap ten khach hang can search" />
+              <button class="btn__search">
+                <i class="uis uis-signout icon"></i>
+              </button>
+            </div>
+          </div>
+          <div id="order__filter">
+            <button class="btn__filter">
+              <i class="uil uil-filter"></i>
+              <span class="body-2">filter</span>
+            </button>
+          </div>
+          <div id="order__list" class="table__container">
+            <table id="order__table" class="table">
+              <thead class="table__head">
+                <tr class="table__row">
+                  <th class="table__col">Order</th>
+                  <th class="table__col">Created</th>
+                  <th class="table__col">From Vendor</th>
+                  <th class="table__col">Status</th>
+                  <th class="table__col">Action</th>
+                  <th class="table__col">Submit/Cancel</th>
+                </tr>
+              </thead>
+              <tbody class="table__body"></tbody>
+            </table>
+          </div>
+          <!-- ORDER DETAIL -->
+          <div class="box-overlay" id="order__modal">
+            <div class="box-model">
+              <div class="box-container" id="order__container">
+                <div class="content">
+                  <div class="model__heading" id="order__heading">
+                    <h2 class="model__heading h2-bold">Order Detail</h2>
+                    <button class="btn__close" id="order__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseOrderModal()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="order__form">
+                    <div>
+                      <strong>Order ID:</strong><span id="order__id"></span>
+                    </div>
+                    <div>
+                      <strong>User ID:</strong><span id="user__id"></span>
+                    </div>
+                    <div>
+                      <strong>From Vendor:</strong>
+                      <span id="from__vendor"></span>
+                    </div>
+                    <div>
+                      <strong>Status:</strong>
+                      <select name="order__status" id="order__status">
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Reject">Reject</option>
+                      </select>
+                    </div>
+                    <div id="list__product">
+                      <strong>List Product:</strong>
+                      <ul class="list__product"></ul>
+                    </div>
+                    <div>
+                      <strong>Tổng tiền</strong>
+                      <p id="total__money"></p>
+                    </div>
+                    <div class="modal__submit">
+                      <button class="btn__submit" onclick="submitUpdateOrder()">
+                        Submit
+                      </button>
+                      <button
+                        class="btn__submit"
+                        onclick="handleCloseOrderModal()"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ORDER FILTER -->
+          <div class="box-overlay" id="filter__modal">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="filter__heading">
+                    <h2 class="model__heading h2-bold" id="filter__heading">
+                      Order Filter
+                    </h2>
+                    <button class="btn__close" id="filter__close">
+                      <i class="uil uil-multiply body-1"></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="filter__form">
+                    <div class="modal__filter">
+                      <label for="date__start">Date Start</label>
+                      <input type="date" name="date__start" id="date__start" />
+                    </div>
+                    <div class="modal__filter">
+                      <label for="date__end">Date End</label>
+                      <input type="date" name="date__end" id="date__end" />
+                    </div>
+                    <div class="modal__filter">
+                      <label for="order__address">Address</label>
+                      <input
+                        type="text"
+                        name="order__address"
+                        id="order__address"
+                      />
+                    </div>
+                    <div class="modal__filter">
+                      <label for="status__order">Status</label>
+                      <select id="status__order">
+                        <option value="Pending">Pending</option>
+                        <option value="Complete">Complete</option>
+                        <option value="Reject">Reject</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="modal__submit">
+                    <button
+                      class="btn__submit body-2"
+                      id="filter__submit"
+                      onclick="handleOrderFilter()"
+                    >
+                      Submit
+                    </button>
+                    <button class="btn__submit body-2" id="filter__cancel">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ORDER ADD -->
+          <!-- <div class="box-overlay" id="order__modal__add">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="filter__heading">
+                    <h2 class="model__heading h2-bold" id="filter__heading">
+                      Order Add
+                    </h2>
+                    <button class="btn__close" id="filter__close">
+                      <i class="uil uil-multiply body-1"></i>
+                    </button>
+                  </div>
+                  <div class="modal__submit">
+                    <button
+                      class="btn__submit body-2"
+                      id="filter__submit"
+                      onclick="handleOrderFilter()"
+                    >
+                      Submit
+                    </button>
+                    <button class="btn__submit body-2" id="filter__cancel">
+                      Cancel
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </section>
+        <section class="page" id="warehouse">
+          <h1 class="heading h1-bold">Danh sach san pham</h1>
+          <div id="warehouse__actions" class="actions__component">
+            <div class="action__search" id="warehouse__search">
+              <input type="text" placeholder="Nhap ten khach hang can search" />
+              <button class="btn__search">
+                <i class="uis uis-signout icon"></i>
+              </button>
+            </div>
+            <div class="action__add" id="warehouse__add">
+              <button
+                class="btn__add body-2"
+                onclick="handleOpenProductModalAdd()"
+              >
+                Them San pham +
+              </button>
+            </div>
+          </div>
+          <div id="warehouse__list" class="table__container">
+            <table class="table">
+              <thead class="table__head">
+                <tr class="table__row">
+                  <th class="table__col">Thumbnail</th>
+                  <th class="table__col">Name</th>
+                  <th class="table__col">Status</th>
+                  <th class="table__col">Price</th>
+                  <th class="table__col">Create at</th>
+                  <th class="table__col">Action</th>
+                </tr>
+              </thead>
+              <tbody class="table__body" id="warehouse__book"></tbody>
+            </table>
+          </div>
+          <!-- Model Product Detail -->
+          <div class="box-overlay" id="product__modal">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="product__heading">
+                    <h2 class="model__heading h2-bold">Product detail</h2>
+                    <button class="btn__close" id="product__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseProductModelDetail()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="product__form">
+                    <div>
+                      <strong>Book ID:</strong><span id="product__id"></span>
+                    </div>
+                    <div>
+                      <strong>Title:</strong>
+                      <input type="text" id="product__name" />
+                    </div>
+                    <div>
+                      <strong>Price:</strong>
+                      <input type="number" step="10000" id="product__price" />
+                    </div>
+                    <div>
+                      <strong>Language:</strong>
+                      <input type="text" id="product__language" />
+                    </div>
+                    <div>
+                      <strong>Description:</strong>
+                      <textarea
+                        type="text"
+                        id="product__description"
+                        rows="5"
+                        cols="35"
+                      ></textarea>
+                    </div>
+                    <div>
+                      <strong>Subject:</strong>
+                      <input type="text" id="product__subject" />
+                    </div>
+                    <div>
+                      <strong>Publication date :</strong>
+                      <input type="date" id="product__publish" />
+                    </div>
+                    <div>
+                      <strong>In stock:</strong>
+                      <input type="number" id="product__stock" min="0" />
+                    </div>
+                    <div>
+                      <strong>Created At:</strong>
+                      <span id="product__created"></span>
+                    </div>
+                    <div class="modal__submit">
+                      <button
+                        class="btn__submit"
+                        onclick="submitUpdateProduct()"
+                      >
+                        Submit
+                      </button>
+                      <button
+                        class="btn__submit"
+                        onclick="handleCloseProductModelDetail()"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal Add Product -->
+          <div class="box-overlay" id="product__modal--add">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="product__heading">
+                    <h2 class="model__heading h2-bold">Add new product</h2>
+                    <button class="btn__close" id="product__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseProductModalAdd()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="product__form">
+                    <div>
+                      <strong>Images:</strong>
+                      <input
+                        type="file"
+                        placeholder="Nhap productID"
+                        id="product__img--add"
+                      />
+                    </div>
+                    <div>
+                      <strong>Title:</strong>
+                      <input type="text" id="product__name--add" />
+                    </div>
+                    <div>
+                      <strong>Price:</strong>
+                      <input
+                        type="number"
+                        step="10000"
+                        id="product__price--add"
+                      />
+                    </div>
+                    <div>
+                      <strong>Language:</strong>
+                      <input type="text" id="product__language--add" />
+                    </div>
+                    <div>
+                      <strong>Author:</strong>
+                      <input type="text" id="product__author--add" />
+                    </div>
+                    <div>
+                      <strong>Description:</strong>
+                      <input type="text" id="product__description--add" />
+                    </div>
+                    <div>
+                      <strong>Pages:</strong>
+                      <input type="text" id="product__pages--add" />
+                    </div>
+                    <div>
+                      <strong>Subject:</strong>
+                      <input type="text" id="product__subject--add" />
+                    </div>
+                    <div>
+                      <strong>Publication date :</strong>
+                      <input type="date" id="product__publish--add" />
+                    </div>
+                    <div>
+                      <strong>Genre:</strong>
+                      <input type="text" id="product__genre--add" />
+                    </div>
+                    <div>
+                      <strong>In stock:</strong>
+                      <input type="number" id="product__stock--add" min="0" />
+                    </div>
+                    <div class="modal__submit">
+                      <button class="btn__submit" onclick="submitNewProduct()">
+                        Submit
+                      </button>
+                      <button
+                        class="btn__submit"
+                        onclick="handleCloseProductModalAdd()"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="page" id="users">
+          <h1 class="heading h1-bold">Danh sach user</h1>
+          <div id="users__actions" class="actions__component">
+            <div class="action__search" id="users__search">
+              <input type="text" placeholder="Nhap ten khach hang can search" />
+              <button class="btn__search">
+                <i class="uis uis-signout icon"></i>
+              </button>
+            </div>
+            <div
+              class="action__add"
+              id="users__add"
+              onclick="handleOpenUserModalAdd()"
+            >
+              <button class="btn__add body-2">Them nguoi dung +</button>
+            </div>
+          </div>
+          <div class="table__container" id="user__list">
+            <table id="user__table" class="table">
+              <thead class="table__head">
+                <tr class="table__row">
+                  <th class="table__col">User ID</th>
+                  <th class="table__col">Name</th>
+                  <th class="table__col">Phone Number</th>
+                  <th class="table__col">Address</th>
+                  <th class="table__col">Status</th>
+                  <th class="table__col">Action</th>
+                </tr>
+              </thead>
+              <tbody class="table__body"></tbody>
+            </table>
+          </div>
+          <!-- Modal User Detail -->
+          <div class="box-overlay" id="user__modal">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="user__heading">
+                    <h2 class="model__heading h2-bold" id="user__heading">
+                      User Update
+                    </h2>
+                    <button class="btn__close" id="user__close">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseUserModal()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="user__form">
+                    <div>
+                      <strong>Name:</strong>
+                      <input type="text" id="user__name" />
+                    </div>
+                    <div>
+                      <strong>Phone Number:</strong>
+                      <input type="text" id="user__phone" />
+                    </div>
+                    <div>
+                      <strong>Email:</strong>
+                      <input type="text" id="user__email" />
+                    </div>
+                    <div>
+                      <strong>Address:</strong>
+                      <input type="text" id="user__address" />
+                    </div>
+                    <div>
+                      <strong>Account Creation Date:</strong>
+                      <span id="user__created"></span>
+                    </div>
+                    <div>
+                      <strong>Number of Orders:</strong>
+                      <span id="user__orders"></span>
+                    </div>
+                    <div class="modal__submit">
+                      <button class="btn__submit" onclick="submitUpdate()">
+                        Submit
+                      </button>
+                      <button
+                        class="btn__submit"
+                        onclick="handleCloseUserModal()"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Modal User Add -->
+          <div class="box-overlay" id="user__modal__add">
+            <div class="box-model">
+              <div class="box-container">
+                <div class="content">
+                  <div class="model__heading" id="user__heading__add">
+                    <h2 class="model__heading h2-bold">User Update</h2>
+                    <button class="btn__close" id="user__close__add">
+                      <i
+                        class="uil uil-multiply body-1"
+                        onclick="handleCloseUserModalAdd()"
+                      ></i>
+                    </button>
+                  </div>
+                  <div class="modal__form" id="user__form__add">
+                    <div>
+                      <strong>Name:</strong>
+                      <input type="text" id="user__name__add" />
+                    </div>
+                    <div>
+                      <strong>Phone Number:</strong>
+                      <input type="text" id="user__phone__add" />
+                    </div>
+                    <div>
+                      <strong>Email:</strong>
+                      <input type="text" id="user__email__add" />
+                    </div>
+                    <div>
+                      <strong>Password:</strong>
+                      <input type="password" id="user__email__add" />
+                    </div>
+                    <div>
+                      <strong>Address:</strong>
+                      <input type="text" id="user__address__add" />
+                    </div>
+                    <div class="modal__submit">
+                      <button class="btn__submit" onclick="createNewUser()">
+                        Submit
+                      </button>
+                      <button
+                        class="btn__submit"
+                        onclick="handleCloseUserModal()"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="page" id="admin">
+          <div class="info__admin">
+            <h1 class="heading__admin">Thong tin admin</h1>
+            <div class="info__field">
+              <label for="admin__name">Name</label>
+              <input type="text" id="admin__name" />
+            </div>
+            <div class="info__field">
+              <label for="admin__email">Email</label>
+              <input type="text" id="admin__email" />
+            </div>
+            <div class="info__field">
+              <label for="admin__address">Address</label>
+              <input type="text" id="admin__address" />
+            </div>
+            <div class="info__field">
+              <label for="admin__password">Password</label>
+              <input type="text" id="admin__password" />
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- ==================== CONTENT END ==================== -->
+    </div>
+    <!-- ==================== APP END ==================== -->
+    <script src="../js/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,469 @@
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 820px) {
+  /* I. Phan header */
+  #header .header__containner {
+    width: 800px;
+    padding: var(--gap-xs) var(--gap-xl);
+  }
+  #showcart {
+    font-size: 16px;
+  }
+  /*II. Phan content*/
+  /*1. Phan banner*/
+  #banner {
+    max-width: 740px;
+    margin: 10px auto;
+  }
+  /* 2. Popular*/
+  .popular {
+    width: 740px;
+    height: 397px;
+    margin: 16px auto;
+  }
+  .title-popular {
+    margin: 0;
+    padding: 12px 0;
+  }
+  .title-popular-desc {
+    min-width: 360px;
+    padding: 5px 0 5px 16px;
+    margin-left: 0;
+  }
+  .title-popular-desc h2 {
+    font-size: 24px;
+  }
+  .title-popular-btn {
+    width: 100%;
+    margin-right: 0;
+    padding: 0 16px;
+  }
+  .title-popular-btn button {
+    margin-right: 8px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+  .title-popular-btn button img {
+    height: 19px;
+    width: 19px;
+  }
+  .title-popular-btn button:first-child {
+    margin-left: 200px;
+  }
+  .list-item {
+    margin-top: 15px;
+    width: 740px;
+  }
+  .item {
+    width: 235px;
+    height: 311px;
+    margin-right: 12px;
+  }
+  .info-item {
+    font-size: var(--gap-xl);
+  }
+  .item img {
+    width: 68.4px;
+    height: 124.4px;
+  }
+  .info-item > div {
+    margin: 5px 0;
+  }
+  .info-item > div > button {
+    font-size: var(--gap-xl);
+    width: 200px;
+    height: 24px;
+    border-radius: 16px;
+    padding: 2px 0;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  /* III.Phần footer*/
+  #footer {
+    width: 800px;
+    font-size: var(--gap-lg);
+  }
+  .main-footer {
+    width: 800px;
+    padding: 30px 12px 30px 20px;
+  }
+  .title-footer {
+    border-bottom: 2px solid var(--bg-overlay);
+    padding-bottom: 10px;
+  }
+  .main-footer > .column {
+    width: 124px;
+  }
+  .main-footer .column-1 {
+    width: 343px;
+  }
+  .column li {
+    margin: 5px 0;
+  }
+  /*Xem chi tiet */
+  .spe-product-item {
+    top: 50%;
+    left: 45%;
+    width: 50%;
+    max-width: 616px;
+  }
+  .main-product {
+    width: 616px;
+    height: 376px;
+  }
+  /*Anh ben trai*/
+  .left-product {
+    flex: 3.4;
+    width: 248px;
+  }
+  .left-product img {
+    width: 100%;
+    height: 360px;
+    margin: 10px 0 10px 10px;
+  }
+  /*Phan ben phai*/
+  .right-product {
+    flex: 4.2;
+    width: 312px;
+    height: 360px;
+    margin: 10px;
+    margin-left: 20px;
+  }
+  .menu-right-product li {
+    width: 112px;
+    height: 40px;
+  }
+  /*cac tag*/
+  .menu-right-product li button {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    padding: 0 20px;
+  }
+  .bg-active {
+    width: 135px;
+    height: 50px;
+  }
+  .product-des {
+    max-width: 400px; /* Chiều rộng tối đa */
+    max-height: 312px; /* Chiều cao tối đa, thay đổi theo nhu cầu */
+    padding: 10px; /* Thêm padding cho đẹp */
+  }
+  .info-content-right-product {
+    font-size: 16px;
+  }
+  .info-content-right-product div {
+    padding: 10px 0 5px 20px;
+  }
+  /*Phan gia tien+Thanh toan*/
+  .pay-content-right-product {
+    font-size: 16px;
+  }
+  .pay-content-right-product div {
+    padding: 10px 0 5px 20px;
+  }
+  .quantity-content-right-product div {
+    padding: 0;
+    margin-right: 10px;
+  }
+  .quantity-content-right-product input {
+    height: 30px;
+  }
+  .pay-content-right-product div:last-child {
+    height: 60px;
+    width: 220px;
+  }
+  .pay-content-right-product div:last-child button {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+/* Largest devices such as desktops (1280px and up) */
+@media only screen and (min-width: 1024px) {
+  /* I. Phan header */
+  #header .header__containner {
+    max-width: 1024px;
+    width: 100%;
+    padding: var(--gap-xs) var(--gap-xl);
+  }
+  .menu-header {
+    flex: 4;
+    font-size: var(--gap-lg);
+  }
+  .menu-header div {
+    padding: 0 var(--gap-xs);
+    margin: 0 6px;
+  }
+  .menu-header div:first-child a::after {
+    width: 32px;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--text-primary-color);
+  }
+
+  .menu-header a:hover {
+    text-shadow: 1px 0 0 var(--text-primary-color);
+  }
+  .menu-header > div:hover .drop-menu-header {
+    top: 24px;
+  }
+  .drop-menu-header {
+    width: 144px;
+    height: 152px;
+    border: 1px solid var(--bg-overlay);
+    top: 40px;
+  }
+  .drop-menu-header li {
+    padding: 8px 0 8px 16px;
+  }
+  .icon-headerr {
+    flex: 2;
+    font-size: 24px;
+  }
+  .icon-header {
+    gap: 64px;
+  }
+  .drop-icon-header {
+    width: 180px;
+    font-size: var(--gap-lg);
+    background-color: var(--suface-background);
+    border: 1px solid #ccc;
+    z-index: 1;
+    margin-top: 24px;
+  }
+  .drop-icon-header li {
+    padding: 6px;
+  }
+  #cart-count {
+    right: -10px; /* Điều chỉnh vị trí theo chiều ngang */
+    padding: 2px 5px; /* Khoảng cách bên trong */
+    font-size: 12px; /* Kích thước chữ */ /* Ẩn ban đầu */
+  }
+  #showcart {
+    width: 580px;
+    font-size: 20px;
+    right: -100px;
+    top: 50px;
+    padding: 10px;
+  }
+  #showcart input {
+    width: 50px;
+  }
+  #showcart img {
+    width: 60px;
+    height: 80px;
+  }
+  .purchase button {
+    border-radius: 10px;
+    margin: 10px 5px;
+    width: 85px;
+    padding: 10px;
+  }
+  /*II. Phan content*/
+  /*1. Phan banner*/
+  #banner {
+    max-width: 944px;
+    margin: 10px auto;
+  }
+  .slide img {
+    height: 320px;
+  }
+  #banner button {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 8px;
+  }
+  .prev {
+    left: 8px;
+  }
+  .next {
+    right: 8px;
+  }
+  .dots {
+    padding: 8px 0;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 5px;
+    border-radius: 50%;
+  }
+  /* 2. Popular*/
+  .popular {
+    width: 944px;
+    height: 397px;
+    margin: 16px auto;
+  }
+  .title-popular {
+    margin: 0;
+    padding: 12px 0;
+  }
+  .title-popular-desc {
+    min-width: 360px;
+    padding: 5px 0 5px 16px;
+    margin-left: 0;
+  }
+  .title-popular-desc h2 {
+    font-size: 24px;
+  }
+  .title-popular-btn {
+    width: 100%;
+    margin-right: 0;
+    padding: 0 16px;
+  }
+  .title-popular-btn button {
+    margin-right: 8px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+  .title-popular-btn button img {
+    height: 19px;
+    width: 19px;
+  }
+  .title-popular-btn button:first-child {
+    margin-left: 440px;
+  }
+  .list-item {
+    margin-top: 15px;
+    width: 944px;
+  }
+  .item {
+    width: 228px;
+    height: 311px;
+    margin-right: 8px;
+  }
+  .info-item {
+    font-size: var(--gap-xl);
+  }
+  .item img {
+    width: 68.4px;
+    height: 124.4px;
+  }
+  .info-item > div {
+    margin: 5px 0;
+  }
+  .info-item > div > button {
+    font-size: var(--gap-xl);
+    width: 200px;
+    height: 24px;
+    border-radius: 16px;
+    padding: 2px 0;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  /* III.Phần footer*/
+  #footer {
+    width: 1024px;
+    background-color: var(--priamry-color);
+    color: var(--text-primary-color);
+    font-size: var(--gap-20);
+  }
+  .main-footer {
+    width: 1024px;
+    padding: 40px 16px 40px 24px;
+  }
+  .title-footer {
+    border-bottom: 2px solid var(--bg-overlay);
+    padding-bottom: 10px;
+  }
+  .main-footer > .column {
+    width: 160px;
+  }
+  .main-footer .column-1 {
+    width: 440px;
+  }
+  .column li {
+    margin: 5px 0;
+  }
+  /*Xem chi tiet */
+  .spe-product-item {
+    top: 50%;
+    left: 45%;
+    width: 50%;
+    max-width: 770px;
+  }
+  .main-product {
+    width: 770px;
+    height: 470px;
+  }
+  /*Anh ben trai*/
+  .left-product {
+    flex: 3.4;
+    width: 310px;
+  }
+  .left-product img {
+    width: 100%;
+    height: 450px;
+    margin: 10px 0 10px 10px;
+  }
+  /*Phan ben phai*/
+  .right-product {
+    flex: 4.2;
+    width: 390px;
+    height: 450px;
+    margin: 10px;
+    margin-left: 20px;
+  }
+  .menu-right-product li {
+    width: 140px;
+    height: 50px;
+  }
+  /*cac tag*/
+  .menu-right-product li button {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    padding: 0 20px;
+  }
+  .bg-active {
+    width: 135px;
+    height: 50px;
+  }
+  .product-des {
+    max-width: 500px; /* Chiều rộng tối đa */
+    max-height: 390px; /* Chiều cao tối đa, thay đổi theo nhu cầu */
+    padding: 10px; /* Thêm padding cho đẹp */
+  }
+  .info-content-right-product {
+    font-size: 20px;
+  }
+  .info-content-right-product div {
+    padding: 10px 0 5px 20px;
+  }
+  /*Phan gia tien+Thanh toan*/
+  .pay-content-right-product {
+    font-size: 20px;
+  }
+  .pay-content-right-product div {
+    padding: 10px 0 5px 20px;
+  }
+  .quantity-content-right-product div {
+    padding: 0;
+    margin-right: 10px;
+  }
+  .quantity-content-right-product input {
+    height: 30px;
+  }
+  .pay-content-right-product div:last-child {
+    height: 60px;
+    width: 220px;
+  }
+  .pay-content-right-product div:last-child button {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    border-radius: 10px;
+  }
+  /* Modal */
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+/*toi code pha nay */

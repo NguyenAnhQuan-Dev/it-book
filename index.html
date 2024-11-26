@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <!--link tag icon-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>IT BOOKS</title>
+  </head>
+  <body>
+    <!-- ==================== APP START ==================== -->
+    <div id="app">
+      <div class="bg-overlay-app"></div>
+      <!-- ==================== HEADER START ==================== -->
+      <header id="header">
+        <div class="header__containner">
+          <div class="logo-header">ITBook</div>
+          <div class="menu-header">
+            <div><a href="#" onclick="showPage('home')"> Trang chủ</a></div>
+            <div><a href="#" onclick="showPage('about')">Giới thiệu</a></div>
+            <div>
+              <a href="#" onclick="showPage('DiscountFormContainer')"
+                >Giảm giá</a
+              >
+            </div>
+            <div>
+              <a href="#">Danh mục sách</a>
+              <ul class="drop-menu-header">
+                <li>
+                  <a href="#" onclick="showPage('languages')">Languages</a>
+                </li>
+                <li><a href="#" onclick="showPage('ai')">AI</a></li>
+                <li><a href="#" onclick="showPage('data')">Data</a></li>
+                <li>
+                  <a href="#" onclick="showPage('acchitecture')"
+                    >Acchitecture</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="icon-header">
+            <div>
+              <button class="icon-headerr" id="btn-theme">
+                <i class="fa-solid fa-toggle-on"></i>
+              </button>
+            </div>
+            <div>
+              <!-- Biểu tượng kính lúp -->
+              <button
+                class="icon-headerr"
+                class="search-icon"
+                onclick="openSearch()"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+
+              <!-- Overlay và Hộp tìm kiếm -->
+              <!-- <div
+                id="search-overlay"
+                class="overlay"
+                onclick="closeSearch()"
+              ></div> -->
+            </div>
+            <div class="cart">
+              <button onclick="showcart()" class="icon-headerr">
+                <i class="fa-solid fa-cart-shopping"></i
+                ><span id="cart-count">0</span>
+              </button>
+              <div id="showcart">
+                <table>
+                  <thead>
+                    <th style="width: 40px">STT</th>
+                    <th style="width: 150px">Tên</th>
+                    <th style="width: 100px">Hình ảnh</th>
+                    <th style="width: 95px">Số lượng</th>
+                    <th style="width: 115px">Thành tiền</th>
+                    <th style="width: 40px">Xoá</th>
+                  </thead>
+                  <tbody id="mycart"></tbody>
+                </table>
+                <div class="purchase">
+                  <button onclick="xoatatca()">Xoá tất cả</button>
+                  <button onclick="openOrderModal()">Đặt hàng</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <button id="dropdown-user" class="icon-headerr">
+                <i class="fa-solid fa-user"></i>
+                <ul class="drop-icon-header userList" id="dropdown-menu-user">
+                  <li>
+                    <a
+                      onclick="showPage('LoginFormContainer')"
+                      id="showLoginForm"
+                      style="display: block; text-align: center"
+                      >Đăng nhập</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      onclick="showPage('SigninFormContainer')"
+                      id="showSigninForm"
+                      style="display: block; text-align: center"
+                      >Đăng ký</a
+                    >
+                  </li>
+                  <li class="username">
+                    <a
+                      onclick="showPage('infoFormContainer')"
+                      id="showinfoForm"
+                      style="text-align: center; display: none"
+                      >Xem thông tin</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="btn-history"
+                      style="display: none; text-align: center"
+                      onclick="toggleInvoice()"
+                      >Lịch sử hóa đơn</a
+                    >
+                  </li>
+                  <li id="logoutItem" style="display: none; text-align: center">
+                    <a id="logoutButton">Đăng xuất</a>
+                  </li>
+                  <!-- Nút đăng xuất -->
+                </ul>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Popup hóa đơn -->
+        <div id="invoicePopup">
+          <div class="invoice-header">
+            <h2>Hoá đơn mua hàng</h2>
+            <button class="close-btn" onclick="toggleInvoice()">Đóng</button>
+          </div>
+          <div class="scrollable-table">
+            <table id="invoiceTable">
+              <thead>
+                <tr>
+                  <th class="td-invoiceTable">Tên sản phẩm</th>
+                  <th class="td-invoiceTable">Giá (VND)</th>
+                  <th class="td-invoiceTable">Số lượng</th>
+                  <th class="td-invoiceTable">Ngày mua</th>
+                  <th class="td-invoiceTable">Giờ mua</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Các hóa đơn sẽ được thêm vào đây -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <hr />
+      </header>
+      <header id="header-mobile">
+        <div class="logo">
+          <img src="./images/logo.png" alt="logo" />
+        </div>
+        <div class="header-mobile__icon">
+          <button
+            class="icon-headerr"
+            class="search-icon"
+            onclick="openSearch()"
+          >
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+          <button onclick="showPage('show-cart-mobile')">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </button>
+          <button><i class="fa-solid fa-user"></i></button>
+        </div>
+        <button onclick="showMenuMobile()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="header-mobile__menu">
+          <div class="header-mobile-menu" onclick="showPage('home')">
+            Trang chủ
+          </div>
+          <div class="header-mobile-menu" onclick="showPage('about')">
+            Giới thiệu
+          </div>
+          <div
+            class="header-mobile-menu"
+            onclick="showPage('DiscountFormContainer')"
+          >
+            Giảm giá
+          </div>
+          <div class="header-mobile-menu" onclick="showCategoryMobile()">
+            Danh mục
+          </div>
+          <div id="show-category-mobile">
+            <div onclick="showPage('languages')">Languages</div>
+            <div onclick="showPage('ai')">AI</div>
+            <div onclick="showPage('data')">Data</div>
+            <div onclick="showPage('acchitecture')">Acchitecture</div>
+          </div>
+        </div>
+      </header>
+      <!-- ==================== HEADER END ==================== -->
+      <!-- ==================== CONTENT START ==================== -->
+      <div>
+        <main id="content">
+          <!--Banner-->
+          <section id="home" class="page active">
+            <div id="banner">
+              <div class="slides">
+                <div class="slide active">
+                  <img src="./images/banner1.jpg" alt="Banner 1" />
+                </div>
+                <div class="slide">
+                  <img src="./images/banner2.jpg" alt="Banner 2" />
+                </div>
+                <div class="slide">
+                  <img src="./images/banner3.jpg" alt="Banner 3" />
+                </div>
+              </div>
+              <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+              <button class="next" onclick="changeSlide(1)">&#10095;</button>
+              <div class="dots">
+                <span class="dot" onclick="showSlide(0)"></span>
+                <span class="dot" onclick="showSlide(1)"></span>
+                <span class="dot" onclick="showSlide(2)"></span>
+              </div>
+            </div>
+            <!--Popular-->
+            <!--Phan popular-->
+            <div class="main-popular">
+              <div class="popular">
+                <div class="title-popular">
+                  <div class="title-popular-desc"><h2>Tiêu đề 1</h2></div>
+                  <div class="title-popular-btn" data-target="list1">
+                    <button class="prevbtn">
+                      <img src="./images/leftbutton.jpg" alt="" />
+                    </button>
+                    <button class="nextbtn">
+                      <img src="./images/rightbutton.jpg" alt="" />
+                    </button>
+                  </div>
+                </div>
+                <div class="list-item" id="list1">
+                  <template class="product-template">
+                    <div class="item" data-index="0">
+                      <div class="img-item">
+                        <img src="/images/anhitem.jpg" alt="" loading="lazy" />
+                      </div>
+                      <div class="info-item">
+                        <h3 class="name-item">Tên sản phẩm</h3>
+                        <div class="div">Thể loại</div>
+                        <div class="star">Số sao</div>
+                        <div class="cost-item">Giá</div>
+                        <div>
+                          <button
+                            onclick="xemchitiet(this)"
+                            data-list="Home_page"
+                          >
+                            Xem chi tiết
+                          </button>
+                        </div>
+                        <div>
+                          <button onclick="themvaogiohang(this)">
+                            Thêm vào giỏ hàng
+                          </button>
+                        </div>
+                        <div class="spe-product-item">
+                          <div class="main-product">
+                            <div class="left-product">
+                              <img
+                                class="product-img"
+                                src="/images/anhitem.jpg"
+                                alt=""
+                              />
+                            </div>
+                            <div class="right-product">
+                              <div class="menu-right-product">
+                                <li>
+                                  <button class="active" data-target="tab1">
+                                    Detail
+                                  </button>
+                                </li>
+                                <li>
+                                  <button data-target="tab2">
+                                    Description
+                                  </button>
+                                </li>
+                                <li><button data-target="tab3">Tag</button></li>
+                                <div class="bg-active"></div>
+                              </div>
+                              <div class="content-right-product">
+                                <div
+                                  class="tab-content-right-product active"
+                                  id="tab1"
+                                >
+                                  <div class="info-content-right-product">
+                                    <div class="product-title">title</div>
+                                    <div class="product-rating">so sao</div>
+                                    <div class="product-category">The loai</div>
+                                    <div class="product-language">Ngon ngu</div>
+                                    <div class="product-pages">so trang</div>
+                                  </div>
+                                  <div class="pay-content-right-product">
+                                    <div class="cost">Giá tiền</div>
+                                    <div class="quantity-content-right-product">
+                                      <div>Số lượng</div>
+                                      <input type="number" value="1" min="1" />
+                                    </div>
+                                    <div>
+                                      <button onclick="themvaogiohang(this)">
+                                        Thêm vào giỏ hàng
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="tab-content-right-product"
+                                  id="tab2"
+                                >
+                                  <p class="product-des">
+                                    Lorem ipsum dolor sit amet...
+                                  </p>
+                                </div>
+                                <div
+                                  class="tab-content-right-product"
+                                  id="tab3"
+                                >
+                                  <p class="product-tag">
+                                    Lorem ipsum dolor sit amet...
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                  <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                </div>
+                <div class="overlay" id="spe-overlay"></div>
+              </div>
+              <div class="popular">
+                <div class="title-popular">
+                  <div class="title-popular-desc"><h2>Tiêu đề 2</h2></div>
+                  <div class="title-popular-btn" data-target="list1">
+                    <button class="prevbtn">
+                      <img src="./images/leftbutton.jpg" alt="" />
+                    </button>
+                    <button class="nextbtn">
+                      <img src="./images/rightbutton.jpg" alt="" />
+                    </button>
+                  </div>
+                </div>
+                <div class="list-item" id="list2">
+                  <template class="product-template">
+                    <div class="item">
+                      <div class="img-item">
+                        <img src="/images/anhitem.jpg" alt="" loading="lazy" />
+                      </div>
+                      <div class="info-item">
+                        <h3 class="name-item">Tên sản phẩm</h3>
+                        <div class="div">Thể loại</div>
+                        <div class="star">Số sao</div>
+                        <div class="cost-item">Giá</div>
+                        <div><button>Xem chi tiết</button></div>
+                        <div>
+                          <button onclick="themvaogiohang(this)">
+                            Thêm vào giỏ hàng
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+
+                  <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Phần Danh mục sách -->
+
+          <section id="languages" class="page">
+            <div id="content-Languages" class="content__page">
+              <div class="menu">
+                <div class="page-tittle">
+                  <div class="page-tittle-inner">
+                    <div class="tittle-centre">SẢN PHẨM</div>
+                    <div class="tittle-form">
+                      <label for="order"></label>
+                      <select name="order" class="order_Languages">
+                        <option value="default">Thứ tự mặc định</option>
+                        <option value="review">
+                          Thứ tự theo điểm đánh giá
+                        </option>
+                        <option value="up-cost">
+                          Thứ tự theo giá: thấp đến cao
+                        </option>
+                        <option value="down-cost">
+                          Thứ tự theo giá: Cao đến thấp
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-page">
+                <div class="list-page-content">
+                  <div class="list-page-content-menu">
+                    <div class="list-item" id="languages-list">
+                      <template class="product-template-languages">
+                        <div class="item" data-form="0">
+                          <div class="img-item">
+                            <img
+                              src="/images/anhitem.jpg"
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="info-item">
+                            <h3 class="name-item">Tên sản phẩm</h3>
+                            <div class="div">Thể loại</div>
+                            <div class="star">Số sao</div>
+                            <div class="cost-item">Giá</div>
+                            <div>
+                              <button
+                                onclick="xemchitiet(this)"
+                                data-list="Languages_page"
+                              >
+                                Xem chi tiết
+                              </button>
+                            </div>
+                            <div>
+                              <button onclick="themvaogiohang(this)">
+                                Thêm vào giỏ hàng
+                              </button>
+                            </div>
+                            <div class="spe-product-item">
+                              <div class="main-product">
+                                <div class="left-product">
+                                  <img
+                                    class="product-img"
+                                    src="/images/anhitem.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="right-product">
+                                  <div class="menu-right-product">
+                                    <li>
+                                      <button class="active" data-target="tab1">
+                                        Detail
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab2">
+                                        Description
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab3">Tag</button>
+                                    </li>
+                                    <div class="bg-active"></div>
+                                  </div>
+                                  <div class="content-right-product">
+                                    <div
+                                      class="tab-content-right-product active"
+                                      id="tab1"
+                                    >
+                                      <div class="info-content-right-product">
+                                        <div class="product-title">title</div>
+                                        <div class="product-rating">so sao</div>
+                                        <div class="product-category">
+                                          The loai
+                                        </div>
+                                        <div class="product-language">
+                                          Ngon ngu
+                                        </div>
+                                        <div class="product-pages">
+                                          so trang
+                                        </div>
+                                      </div>
+                                      <div class="pay-content-right-product">
+                                        <div class="cost">Giá tiền</div>
+                                        <div
+                                          class="quantity-content-right-product"
+                                        >
+                                          <div>Số lượng</div>
+                                          <input
+                                            type="number"
+                                            value="1"
+                                            min="1"
+                                          />
+                                        </div>
+                                        <div>
+                                          <button
+                                            onclick="themvaogiohang(this)"
+                                          >
+                                            Thêm vào giỏ hàng
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab2"
+                                    >
+                                      <p class="product-des">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab3"
+                                    >
+                                      <p class="product-tag">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                    </div>
+                    <div class="overlay" id="languages-spe-overlay"></div>
+                  </div>
+                </div>
+                <div class="list-page-content-bottom">
+                  <ul class="Languages-pagination"></ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Phần Danh sách của  AI -->
+
+          <section id="ai" class="page">
+            <div id="content-AI" class="content__page">
+              <div class="menu">
+                <div class="page-tittle">
+                  <div class="page-tittle-inner">
+                    <div class="tittle-centre">SẢN PHẨM</div>
+                    <div class="tittle-form">
+                      <label for="order"></label>
+                      <select name="order" class="order_AI">
+                        <option value="default">Thứ tự mặc định</option>
+                        <option value="review">
+                          Thứ tự theo điểm đánh giá
+                        </option>
+                        <option value="up-cost">
+                          Thứ tự theo giá: thấp đến cao
+                        </option>
+                        <option value="down-cost">
+                          Thứ tự theo giá: Cao đến thấp
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-page">
+                <div class="list-page-content">
+                  <div class="list-page-content-menu">
+                    <div class="list-item" id="AI-list">
+                      <template class="product-template-AI">
+                        <div class="item" data-form="0">
+                          <div class="img-item">
+                            <img
+                              src="/images/anhitem.jpg"
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="info-item">
+                            <h3 class="name-item">Tên sản phẩm</h3>
+                            <div class="div">Thể loại</div>
+                            <div class="star">Số sao</div>
+                            <div class="cost-item">Giá</div>
+                            <div>
+                              <button
+                                onclick="xemchitiet(this)"
+                                data-list="AI_page"
+                              >
+                                Xem chi tiết
+                              </button>
+                            </div>
+                            <div>
+                              <button onclick="themvaogiohang(this)">
+                                Thêm vào giỏ hàng
+                              </button>
+                            </div>
+                            <div class="spe-product-item">
+                              <div class="main-product">
+                                <div class="left-product">
+                                  <img
+                                    class="product-img"
+                                    src="/images/anhitem.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="right-product">
+                                  <div class="menu-right-product">
+                                    <li>
+                                      <button class="active" data-target="tab1">
+                                        Detail
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab2">
+                                        Description
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab3">Tag</button>
+                                    </li>
+                                    <div class="bg-active"></div>
+                                  </div>
+                                  <div class="content-right-product">
+                                    <div
+                                      class="tab-content-right-product active"
+                                      id="tab1"
+                                    >
+                                      <div class="info-content-right-product">
+                                        <div class="product-title">title</div>
+                                        <div class="product-rating">so sao</div>
+                                        <div class="product-category">
+                                          The loai
+                                        </div>
+                                        <div class="product-language">
+                                          Ngon ngu
+                                        </div>
+                                        <div class="product-pages">
+                                          so trang
+                                        </div>
+                                      </div>
+                                      <div class="pay-content-right-product">
+                                        <div class="cost">Giá tiền</div>
+                                        <div
+                                          class="quantity-content-right-product"
+                                        >
+                                          <div>Số lượng</div>
+                                          <input
+                                            type="number"
+                                            value="1"
+                                            min="1"
+                                          />
+                                        </div>
+                                        <div>
+                                          <button
+                                            onclick="themvaogiohang(this)"
+                                          >
+                                            Thêm vào giỏ hàng
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab2"
+                                    >
+                                      <p class="product-des">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab3"
+                                    >
+                                      <p class="product-tag">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                    </div>
+                    <div class="overlay" id="AI-spe-overlay"></div>
+                  </div>
+                </div>
+                <div class="list-page-content-bottom">
+                  <ul class="AI-pagination"></ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!----Phần Sách của DATA---->
+          <section id="data" class="page">
+            <div id="content-DATA" class="content__page">
+              <div class="menu">
+                <div class="page-tittle">
+                  <div class="page-tittle-inner">
+                    <div class="tittle-centre">SẢN PHẨM</div>
+                    <div class="tittle-form">
+                      <label for="order"></label>
+                      <select name="order" class="order_DATA">
+                        <option value="default">Thứ tự mặc định</option>
+                        <option value="review">
+                          Thứ tự theo điểm đánh giá
+                        </option>
+                        <option value="up-cost">
+                          Thứ tự theo giá: thấp đến cao
+                        </option>
+                        <option value="down-cost">
+                          Thứ tự theo giá: Cao đến thấp
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-page">
+                <div class="list-page-content">
+                  <div class="list-page-content-menu">
+                    <div class="list-item" id="DATA-list">
+                      <template class="product-template-DATA">
+                        <div class="item" data-form="0">
+                          <div class="img-item">
+                            <img
+                              src="/images/anhitem.jpg"
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="info-item">
+                            <h3 class="name-item">Tên sản phẩm</h3>
+                            <div class="div">Thể loại</div>
+                            <div class="star">Số sao</div>
+                            <div class="cost-item">Giá</div>
+                            <div>
+                              <button
+                                onclick="xemchitiet(this)"
+                                data-list="DATA_page"
+                              >
+                                Xem chi tiết
+                              </button>
+                            </div>
+                            <div>
+                              <button onclick="themvaogiohang(this)">
+                                Thêm vào giỏ hàng
+                              </button>
+                            </div>
+                            <div class="spe-product-item">
+                              <div class="main-product">
+                                <div class="left-product">
+                                  <img
+                                    class="product-img"
+                                    src="/images/anhitem.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="right-product">
+                                  <div class="menu-right-product">
+                                    <li>
+                                      <button class="active" data-target="tab1">
+                                        Detail
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab2">
+                                        Description
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab3">Tag</button>
+                                    </li>
+                                    <div class="bg-active"></div>
+                                  </div>
+                                  <div class="content-right-product">
+                                    <div
+                                      class="tab-content-right-product active"
+                                      id="tab1"
+                                    >
+                                      <div class="info-content-right-product">
+                                        <div class="product-title">title</div>
+                                        <div class="product-rating">so sao</div>
+                                        <div class="product-category">
+                                          The loai
+                                        </div>
+                                        <div class="product-language">
+                                          Ngon ngu
+                                        </div>
+                                        <div class="product-pages">
+                                          so trang
+                                        </div>
+                                      </div>
+                                      <div class="pay-content-right-product">
+                                        <div class="cost">Giá tiền</div>
+                                        <div
+                                          class="quantity-content-right-product"
+                                        >
+                                          <div>Số lượng</div>
+                                          <input
+                                            type="number"
+                                            value="1"
+                                            min="1"
+                                          />
+                                        </div>
+                                        <div>
+                                          <button
+                                            onclick="themvaogiohang(this)"
+                                          >
+                                            Thêm vào giỏ hàng
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab2"
+                                    >
+                                      <p class="product-des">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab3"
+                                    >
+                                      <p class="product-tag">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                    </div>
+                    <div class="overlay" id="DATA-spe-overlay"></div>
+                  </div>
+                </div>
+                <div class="list-page-content-bottom">
+                  <ul class="DATA-pagination"></ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Phần Danh Sách Acchirecture -->
+          <section id="acchitecture" class="page">
+            <div id="content-ACCHITECTURE" class="content__page">
+              <div class="menu">
+                <div class="page-tittle">
+                  <div class="page-tittle-inner">
+                    <div class="tittle-centre">SẢN PHẨM</div>
+                    <div class="tittle-form">
+                      <label for="order"></label>
+                      <select name="order" class="order_ACCHITECTURE">
+                        <option value="default">Thứ tự mặc định</option>
+                        <option value="review">
+                          Thứ tự theo điểm đánh giá
+                        </option>
+                        <option value="up-cost">
+                          Thứ tự theo giá: thấp đến cao
+                        </option>
+                        <option value="down-cost">
+                          Thứ tự theo giá: Cao đến thấp
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-page">
+                <div class="list-page-content">
+                  <div class="list-page-content-menu">
+                    <div class="list-item" id="ACCHITECTURE-list">
+                      <template class="product-template-ACCHITECTURE">
+                        <div class="item" data-form="0">
+                          <div class="img-item">
+                            <img
+                              src="/images/anhitem.jpg"
+                              alt=""
+                              loading="lazy"
+                            />
+                          </div>
+                          <div class="info-item">
+                            <h3 class="name-item">Tên sản phẩm</h3>
+                            <div class="div">Thể loại</div>
+                            <div class="star">Số sao</div>
+                            <div class="cost-item">Giá</div>
+                            <div>
+                              <button
+                                onclick="xemchitiet(this)"
+                                data-list="ACCHITECTURE_page"
+                              >
+                                Xem chi tiết
+                              </button>
+                            </div>
+                            <div>
+                              <button onclick="themvaogiohang(this)">
+                                Thêm vào giỏ hàng
+                              </button>
+                            </div>
+                            <div class="spe-product-item">
+                              <div class="main-product">
+                                <div class="left-product">
+                                  <img
+                                    class="product-img"
+                                    src="/images/anhitem.jpg"
+                                    alt=""
+                                  />
+                                </div>
+                                <div class="right-product">
+                                  <div class="menu-right-product">
+                                    <li>
+                                      <button class="active" data-target="tab1">
+                                        Detail
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab2">
+                                        Description
+                                      </button>
+                                    </li>
+                                    <li>
+                                      <button data-target="tab3">Tag</button>
+                                    </li>
+                                    <div class="bg-active"></div>
+                                  </div>
+                                  <div class="content-right-product">
+                                    <div
+                                      class="tab-content-right-product active"
+                                      id="tab1"
+                                    >
+                                      <div class="info-content-right-product">
+                                        <div class="product-title">title</div>
+                                        <div class="product-rating">so sao</div>
+                                        <div class="product-category">
+                                          The loai
+                                        </div>
+                                        <div class="product-language">
+                                          Ngon ngu
+                                        </div>
+                                        <div class="product-pages">
+                                          so trang
+                                        </div>
+                                      </div>
+                                      <div class="pay-content-right-product">
+                                        <div class="cost">Giá tiền</div>
+                                        <div
+                                          class="quantity-content-right-product"
+                                        >
+                                          <div>Số lượng</div>
+                                          <input
+                                            type="number"
+                                            value="1"
+                                            min="1"
+                                          />
+                                        </div>
+                                        <div>
+                                          <button
+                                            onclick="themvaogiohang(this)"
+                                          >
+                                            Thêm vào giỏ hàng
+                                          </button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab2"
+                                    >
+                                      <p class="product-des">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                    <div
+                                      class="tab-content-right-product"
+                                      id="tab3"
+                                    >
+                                      <p class="product-tag">
+                                        Lorem ipsum dolor sit amet...
+                                      </p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+                    </div>
+                    <div class="overlay" id="ACCHITECTURE-spe-overlay"></div>
+                  </div>
+                </div>
+                <div class="list-page-content-bottom">
+                  <ul class="ACCHITECTURE-pagination"></ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Form Modal -->
+          <div>
+            <form
+              id="orderModal"
+              class="order-modal"
+              onsubmit="submitOrder(event)"
+            >
+              <div class="order-modal-content">
+                <span class="close" onclick="closeOrderModal()">&times;</span>
+                <h2>Thông tin đặt hàng</h2>
+
+                <!-- Chọn Địa Chỉ Giao Hàng -->
+                <div>
+                  <div class="h4-semi-bold">Địa chỉ giao hàng</div>
+                  <label>
+                    <input
+                      type="radio"
+                      name="addressOption"
+                      id="input__address"
+                      onchange="toggleAddressForm()"
+                    />
+                    Chọn thông tin từ tài khoẳn
+                  </label>
+                  <br />
+                  <label>
+                    <input
+                      type="radio"
+                      name="addressOption"
+                      id="input__address--new"
+                      onchange="toggleAddressForm()"
+                    />
+                    Nhập thông tin khác
+                  </label>
+                  <div id="newAddressForm" style="display: none">
+                    <div>
+                      <input type="text" id="fullName" placeholder="Họ tên" />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        id="phoneNumber"
+                        placeholder="Số điện thoại"
+                      />
+                    </div>
+                    <div>
+                      <input type="text" id="address" placeholder="Địa chỉ" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Phương Thức Thanh Toán -->
+                <select
+                  name="method-pay"
+                  id="method-pay"
+                  onchange="togglePaymentForm()"
+                >
+                  <option name="paymentOption" value="OCD">Tiền mặt</option>
+                  <option name="paymentOption" value="BANK">
+                    Chuyển khoản
+                  </option>
+                  <option name="paymentOption" value="VISA">Visa</option>
+                </select>
+                <div id="paymentForm">
+                  <p>Bạn sẽ thanh toán khi nhận hàng.</p>
+                </div>
+
+                <!-- Nút Xác nhận -->
+                <button type="submit">Xác nhận đặt hàng</button>
+              </div>
+            </form>
+            <!-- Overlay -->
+            <div id="order-overlay" class="overlay" style="display: none"></div>
+          </div>
+          <section id="show-cart-mobile" class="page">
+            <h1>Giỏ hàng</h1>
+            <div id="cart__list" class="table__container">
+              <table id="cart__table" class="table">
+                <thead class="table__head">
+                  <tr class="table__row">
+                    <th class="table__col">STT</th>
+                    <th class="table__col">Tên</th>
+                    <th class="table__col">Hình ảnh</th>
+                    <th class="table__col">Số lượng</th>
+                    <th class="table__col">Thành tiền</th>
+                    <th class="table__col">Xoá</th>
+                  </tr>
+                </thead>
+                <tbody id="mycart-mobile" class="table__body"></tbody>
+              </table>
+            </div>
+            <div class="purchase">
+              <button onclick="xoatatca()">Xoá tất cả</button>
+              <button onclick="openOrderModal()">Đặt hàng</button>
+            </div>
+          </section>
+        </main>
+      </div>
+      <div id="DiscountFormContainer" class="page">
+        <div class="discount-form">
+          <span class="spin-arrow">
+            <ul class="wheel"></ul>
+          </span>
+          <button class="btn--wheel">Quay thưởng</button>
+        </div>
+        <h1 class="msg"></h1>
+      </div>
+      <div id="LoginFormContainer" class="page">
+        <div id="wrapper">
+          <form action="" id="form-login">
+            <h1 class="form-heading">Đăng nhập</h1>
+
+            <div class="form-group">
+              <div>
+                <div>Email</div>
+                <input type="text" class="box-shadow input-login-email" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <div>Mật khẩu</div>
+                <input
+                  type="password"
+                  class="box-shadow input-login-password"
+                />
+              </div>
+            </div>
+
+            <div class="text-align-right">
+              <p>Quên mật khẩu?</p>
+            </div>
+
+            <div>
+              <button
+                id="login__signInButton"
+                type="submit"
+                class="form-submit"
+              >
+                Đăng Nhập
+              </button>
+            </div>
+            <div class="text-align-center">
+              <span
+                >Bạn chưa có tài khoản?
+                <span
+                  ><a onclick="showPage('SigninFormContainer')" class="sign-in"
+                    >Đăng ký</a
+                  >
+                </span>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="SigninFormContainer" class="page">
+        <div id="wrapper">
+          <form action="" id="form-login">
+            <h1 class="form-heading">Đăng kí</h1>
+
+            <div>
+              <div>Username</div>
+            </div>
+            <div class="form-group">
+              <input width: 100% type="text" class="box-shadow
+              input-signup-username" required />
+            </div>
+
+            <div>Email</div>
+            <div class="form-group">
+              <input
+                type="text"
+                class="box-shadow input-signup-email"
+                required
+              />
+            </div>
+
+            <div>Mật khẩu</div>
+            <div class="form-group">
+              <input width: 100% type="password" class="box-shadow
+              input-signup-password" required/>
+            </div>
+            <div>
+              <p>
+                <button
+                  id="signup__signInButton"
+                  value="Đăng kí"
+                  class="form-submit"
+                >
+                  Đăng kí
+                </button>
+              </p>
+            </div>
+
+            <div class="text-align-center">
+              <span>
+                Bạn đã có tài khoản?
+                <span
+                  ><a onclick="showPage('LoginFormContainer')" class="sign-in"
+                    >Đăng nhập</a
+                  ></span
+                >
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="UpinfoFormContainer" class="page">
+        <div>
+          <div id="wrapper">
+            <form action="" id="form-login">
+              <h1 class="form-heading">Thông tin cá nhân</h1>
+
+              <div class="form-group">
+                <div>
+                  <div>Họ và tên</div>
+                  <input type="text" class="box-shadow HotenInput" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div>
+                  <div>SDT</div>
+                  <input type="text" class="box-shadow SDTInput" />
+                </div>
+              </div>
+              <div class="form-group">
+                <div>
+                  <div>Địa chỉ</div>
+                  <input type="text" class="box-shadow AddressInput" />
+                </div>
+              </div>
+
+              <div>
+                <button id="Inputinformation" type="submit" class="form-submit">
+                  Hoàn tất
+                </button>
+              </div>
+              <p></p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id="infoFormContainer" class="page">
+        <div>
+          <div id="wrapper">
+            <form action="" id="infotable" class="infotable">
+              <h1 class="form-heading">Thông tin cá nhân</h1>
+              <div style="text-align: end; margin-bottom: 20px">
+                <a href="" style="color: blue">Lịch sử mua hàng</a>
+              </div>
+
+              <!-- Username -->
+              <span style="display: flex">
+                <div class="form-text">
+                  <span>
+                    <div>Username:</div>
+                    <div class="usernameUP"></div>
+                  </span>
+                </div>
+              </span>
+
+              <!-- Họ và tên -->
+              <!-- <span style="display: flex">
+                <div class="form-text">
+                  <span>
+                    <div>Họ và tên:</div>
+                    <div class="fullnameUP"></div>
+                  </span>
+                </div>
+              </span> -->
+
+              <!-- Email -->
+              <span style="display: flex">
+                <div class="form-text">
+                  <span>
+                    <div>Email:</div>
+                    <div class="emailUP"></div>
+                  </span>
+                </div>
+              </span>
+
+              <!-- Số điện thoại (SDT) -->
+              <span style="display: flex">
+                <div class="form-text">
+                  <span>
+                    <div>SDT:</div>
+                    <div class="SDTUP"></div>
+                  </span>
+                </div>
+              </span>
+
+              <!-- Địa chỉ -->
+              <span style="display: flex">
+                <div class="form-text">
+                  <span>
+                    <div>Địa chỉ:</div>
+                    <div class="addressUP"></div>
+                  </span>
+                </div>
+              </span>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div>
+        <!-- Overlay và Hộp tìm kiếm -->
+        <div id="search-overlay" class="overlay" onclick="closeSearch()"></div>
+
+        <div id="search-box" class="search-box">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Nhập tên sản phẩm..."
+            />
+            <button class="grem" onclick="filterProducts()">Tìm kiếm</button>
+          </div>
+
+          <!-- Khu vực Lọc -->
+          <!-- Nút Lọc -->
+          <button class="grem" onclick="openFilterModal()">Lọc chi tiết</button>
+
+          <!-- Modal Lọc -->
+          <div id="filter-modal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeFilterModal()">&times;</span>
+              <div class="modal-header grem">Tùy chọn lọc</div>
+
+              <!-- Lọc theo giá -->
+              <div>
+                <label for="price-min">Giá tối thiểu:</label>
+                <input type="number" id="price-min" placeholder="0" />
+              </div>
+              <div>
+                <label for="price-max">Giá tối đa:</label>
+                <input type="number" id="price-max" placeholder="1000000" />
+              </div>
+              <!-- Lọc theo đánh giá -->
+              <div>
+                <label for="ratting">Số sao:</label>
+                <select id="ratting">
+                  <option value="">Tất cả</option>
+                  <option value="5">5 sao</option>
+                  <option value="4">4 sao trở lên</option>
+                  <option value="3">3 sao trở lên</option>
+                  <option value="2">2 sao trở lên</option>
+                  <option value="1">1 sao trở lên</option>
+                </select>
+              </div>
+
+              <!-- Lọc theo thể loại -->
+              <div>
+                <label for="tags">Thể loại:</label>
+                <select id="tags" class="select-scroll">
+                  <option value="">Tất cả</option>
+                  <option value="Programming">Programming</option>
+                  <option value="GUI">GUI</option>
+                  <option value="C">C</option>
+                  <option value="Raspberry Pi">Raspberry Pi</option>
+                  <option value="Guide">Guide</option>
+                  <option value="Azure">Azure</option>
+                  <option value="Kubernetes">Kubernetes</option>
+                  <option value="Cloud">Cloud</option>
+                  <option value="Hacking">Hacking</option>
+                  <option value="Magazine">Magazine</option>
+                </select>
+              </div>
+
+              <!-- Nút Xác Nhận -->
+              <button class="pagination grem" onclick="applyFilters()">
+                OK
+              </button>
+            </div>
+          </div>
+
+          <!-- Khu vực sản phẩm -->
+          <div class="product-grid" id="product-grid">
+            <!-- Các ô vuông sản phẩm sẽ được chèn từ JS -->
+
+            <!-- Sản phẩm sẽ được tạo ở đây bằng JavaScript -->
+          </div>
+          <div id="no-products-message" id="hidden">
+            <p>Không tìm thấy sản phẩm nào phù hợp.</p>
+          </div>
+          <!-- Modal overlay -->
+          <div class="modal-overlay" id="modalOverlay">
+            <div class="product-modal">
+              <div class="grem">
+                <button class="close-modal" onclick="hideModal()">X</button>
+              </div>
+              <div class="modal-contentt">
+                <img src="" alt="Product Image" id="modalImage" />
+                <div class="modal-details">
+                  <div class="tabs">
+                    <div
+                      class="tab active"
+                      onclick="switchTab(event, 'tabDetail')"
+                    >
+                      Detail
+                    </div>
+                    <div
+                      class="tab"
+                      onclick="switchTab(event, 'tabDescription')"
+                    >
+                      Description
+                    </div>
+                    <div class="tab" onclick="switchTab(event, 'tabTag')">
+                      Tag
+                    </div>
+                  </div>
+
+                  <div id="tabDetail" class="tab-content active">
+                    <h2 class="name-item" id="modalTitle">Tên sản phẩm</h2>
+                    <p class="cost-item" id="modalPrice">Giá: 0₫</p>
+                    <p id="modalrating">Số sao:0</p>
+                    <p id="modalHashTags">Thể loại :</p>
+                    <p id="modalLanguage">Ngôn ngữ :</p>
+                    <p id="modal Page">Số trang:</p>
+                    <div>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div id="tabDescription" class="tab-content">
+                    <p id="eDescription"></p>
+                  </div>
+                  <div id="tabTag" class="tab-content">
+                    <p id="tagz"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+      <!-- ==================== CONTENT END ==================== -->
+      <!-- ==================== FOOTER START ==================== -->
+      <footer id="footer">
+        <div class="footer__container">
+          <div class="footer__left">
+            <!-- Footer logo -->
+            <div class="footer__logo">
+              <svg
+                width="110"
+                height="17"
+                viewBox="0 0 171 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M49.4004 0.404297L43.9336 26.1035H48.0645L53.5488 0.404297H49.4004ZM63.1641 3.99023L58.4883 26.1035H62.6719L67.3477 3.99023H74.0449L74.7832 0.404297H57.2402L56.4844 3.99023H63.1641ZM78.5977 0.404297L73.166 26.1035H81.7793C83.7012 26.1035 85.4121 25.8105 86.9121 25.2246C88.4238 24.627 89.6133 23.7246 90.4805 22.5176C91.3594 21.2988 91.7988 19.7637 91.7988 17.9121C91.7988 16.5527 91.4297 15.4512 90.6914 14.6074C89.9531 13.752 88.9922 13.166 87.8086 12.8496V12.6914C88.9922 12.457 90.0059 12.0527 90.8496 11.4785C91.7051 10.8926 92.3613 10.1543 92.8184 9.26367C93.2871 8.36133 93.5215 7.33008 93.5215 6.16992C93.5215 4.81055 93.1992 3.70898 92.5547 2.86523C91.9219 2.02148 91.0195 1.40039 89.8477 1.00195C88.6758 0.603516 87.2813 0.404297 85.6641 0.404297H78.5977ZM82.0078 22.5703H78.0703L79.8105 14.3965H83.3613C84.8145 14.3965 85.8691 14.7188 86.5254 15.3633C87.1934 16.0078 87.5273 16.8633 87.5273 17.9297C87.5273 18.9375 87.2988 19.7871 86.8418 20.4785C86.3965 21.1699 85.7578 21.6914 84.9258 22.043C84.1055 22.3945 83.1328 22.5703 82.0078 22.5703ZM84.0293 11.0039H80.5137L82.0254 3.90234H85.2773C86.6484 3.90234 87.6445 4.16016 88.2656 4.67578C88.8984 5.19141 89.2148 5.94141 89.2148 6.92578C89.2148 7.86328 88.9863 8.63672 88.5293 9.24609C88.084 9.84375 87.4688 10.2891 86.6836 10.582C85.9102 10.8633 85.0254 11.0039 84.0293 11.0039ZM97.3887 21.7793C98.1152 23.2676 99.1816 24.4219 100.588 25.2422C102.006 26.0508 103.752 26.4551 105.826 26.4551C107.314 26.4551 108.668 26.2441 109.887 25.8223C111.117 25.3887 112.213 24.791 113.174 24.0293C114.146 23.2676 114.99 22.3711 115.705 21.3398C116.42 20.2969 117.012 19.1602 117.48 17.9297C117.961 16.6875 118.313 15.3867 118.535 14.0273C118.77 12.6562 118.887 11.2676 118.887 9.86133C118.887 6.82617 118.084 4.42383 116.479 2.6543C114.885 0.884766 112.588 0 109.588 0C108.135 0 106.793 0.210938 105.563 0.632812C104.344 1.05469 103.242 1.65234 102.258 2.42578C101.273 3.1875 100.406 4.08984 99.6563 5.13281C98.918 6.17578 98.3027 7.3125 97.8105 8.54297C97.3184 9.77344 96.9434 11.0684 96.6855 12.4277C96.4395 13.7754 96.3164 15.1523 96.3164 16.5586C96.3164 18.5508 96.6738 20.291 97.3887 21.7793ZM108.48 22.3945C107.73 22.6992 106.928 22.8516 106.072 22.8516C104.924 22.8516 103.939 22.6055 103.119 22.1133C102.311 21.6211 101.689 20.9004 101.256 19.9512C100.834 19.002 100.623 17.8594 100.623 16.5234C100.623 15.3516 100.711 14.2266 100.887 13.1484C101.074 12.0586 101.344 11.0332 101.695 10.0723C102.047 9.11133 102.469 8.23828 102.961 7.45312C103.465 6.65625 104.039 5.9707 104.684 5.39648C105.328 4.81055 106.031 4.36523 106.793 4.06055C107.566 3.74414 108.393 3.58594 109.271 3.58594C110.971 3.58594 112.277 4.14844 113.191 5.27344C114.117 6.39844 114.58 7.93945 114.58 9.89648C114.58 11.1035 114.486 12.2637 114.299 13.377C114.111 14.4785 113.842 15.5098 113.49 16.4707C113.15 17.4316 112.729 18.3047 112.225 19.0898C111.732 19.875 111.17 20.5488 110.537 21.1113C109.916 21.6621 109.23 22.0898 108.48 22.3945ZM123.51 21.7793C124.236 23.2676 125.303 24.4219 126.709 25.2422C128.127 26.0508 129.873 26.4551 131.947 26.4551C133.436 26.4551 134.789 26.2441 136.008 25.8223C137.238 25.3887 138.334 24.791 139.295 24.0293C140.268 23.2676 141.111 22.3711 141.826 21.3398C142.541 20.2969 143.133 19.1602 143.602 17.9297C144.082 16.6875 144.434 15.3867 144.656 14.0273C144.891 12.6562 145.008 11.2676 145.008 9.86133C145.008 6.82617 144.205 4.42383 142.6 2.6543C141.006 0.884766 138.709 0 135.709 0C134.256 0 132.914 0.210938 131.684 0.632812C130.465 1.05469 129.363 1.65234 128.379 2.42578C127.395 3.1875 126.527 4.08984 125.777 5.13281C125.039 6.17578 124.424 7.3125 123.932 8.54297C123.439 9.77344 123.064 11.0684 122.807 12.4277C122.561 13.7754 122.438 15.1523 122.438 16.5586C122.438 18.5508 122.795 20.291 123.51 21.7793ZM134.602 22.3945C133.852 22.6992 133.049 22.8516 132.193 22.8516C131.045 22.8516 130.061 22.6055 129.24 22.1133C128.432 21.6211 127.811 20.9004 127.377 19.9512C126.955 19.002 126.744 17.8594 126.744 16.5234C126.744 15.3516 126.832 14.2266 127.008 13.1484C127.195 12.0586 127.465 11.0332 127.816 10.0723C128.168 9.11133 128.59 8.23828 129.082 7.45312C129.586 6.65625 130.16 5.9707 130.805 5.39648C131.449 4.81055 132.152 4.36523 132.914 4.06055C133.688 3.74414 134.514 3.58594 135.393 3.58594C137.092 3.58594 138.398 4.14844 139.313 5.27344C140.238 6.39844 140.701 7.93945 140.701 9.89648C140.701 11.1035 140.607 12.2637 140.42 13.377C140.232 14.4785 139.963 15.5098 139.611 16.4707C139.271 17.4316 138.85 18.3047 138.346 19.0898C137.854 19.875 137.291 20.5488 136.658 21.1113C136.037 21.6621 135.352 22.0898 134.602 22.3945ZM152.813 0.404297L147.381 26.1035H151.529L153.568 16.3652L156.258 14.5723L160.705 26.1035H165.311L159.65 12.1816L170.514 0.404297H165.539L156.75 9.93164L154.271 12.9375L156.979 0.404297H152.813ZM17 3.5H45V0.5H17V3.5ZM41 14.5L0 14.5L2.38419e-07 11.5L41 11.5V14.5ZM13 24.5L37 24.5V21.5L13 21.5V24.5Z"
+                  fill="#0033A0"
+                />
+              </svg>
+            </div>
+            <!-- Footer infomation -->
+            <div class="footer__information">
+              <p id="footer__email h6-medium">Email: itbooks@gmail.com</p>
+              <p id="footer__address h6-medium">
+                Địa chỉ: 273 An Dương Vương - Phường 3 - Quận 5
+              </p>
+              <p id="footer__phonenumber h6-medium">
+                Số điện thoại: 0338472119
+              </p>
+            </div>
+          </div>
+          <div class="footer__right">
+            <div class="footer__column">
+              <p class="title h6-medium">Tài nguyên</p>
+              <div class="footer__resource">
+                <p class="body-2">Blogs</p>
+                <p class="body-2">Tin tức mới nhất</p>
+                <p class="body-2">Sự kiện</p>
+                <p class="body-2">FAQ</p>
+              </div>
+            </div>
+            <div class="footer__column">
+              <p class="title h6-medium">Mạng xã hội</p>
+              <div class="footer__social">
+                <p class="body-2">Facebook</p>
+                <p class="body-2">Instagram</p>
+                <p class="body-2">X</p>
+                <p class="body-2">Threads</p>
+              </div>
+            </div>
+            <div class="footer__column">
+              <p class="title h6-medium">Các chính sách</p>
+              <div class="footer__policies">
+                <p class="body-2">Blogs</p>
+                <p class="body-2">Tin tức mới nhất</p>
+                <p class="body-2">Sự kiện</p>
+                <p class="body-2">FAQ</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- ==================== FOOTER END ==================== -->
+    </div>
+    <!-- ==================== APP END ==================== -->
+    <section></section>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
