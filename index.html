@@ -148,17 +148,38 @@
             <table id="invoiceTable">
               <thead>
                 <tr>
-                  <th class="td-invoiceTable">Tên sản phẩm</th>
-                  <th class="td-invoiceTable">Giá (VND)</th>
-                  <th class="td-invoiceTable">Số lượng</th>
+                  <th class="td-invoiceTable">Ma Hóa Đơn</th>
+                  <th class="td-invoiceTable">Trạng Thái</th>
                   <th class="td-invoiceTable">Ngày mua</th>
                   <th class="td-invoiceTable">Giờ mua</th>
+                  <th class="td-invoiceTable">xem chi tiết</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Các hóa đơn sẽ được thêm vào đây -->
               </tbody>
             </table>
+          </div>
+          <!-- Modal Chi Tiết Đơn Hàng -->
+          <div id="Modalorder" class="modalorder" style="display: none">
+            <div class="modal-contenttt">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <h2>Chi Tiết Hóa Đơn</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Số lượng</th>
+                    <th>Tổng</th>
+                  </tr>
+                </thead>
+                <tbody id="modalOrderDetails"></tbody>
+              </table>
+              <div>
+                <strong>Tổng Cộng: </strong><span id="modalTotal"></span> VND
+              </div>
+            </div>
           </div>
         </div>
         <hr />
@@ -238,13 +259,13 @@
             <div class="main-popular">
               <div class="popular">
                 <div class="title-popular">
-                  <div class="title-popular-desc"><h2>Tiêu đề 1</h2></div>
+                  <div class="title-popular-desc"><h2>Dành cho bạn</h2></div>
                   <div class="title-popular-btn" data-target="list1">
                     <button class="prevbtn">
                       <img src="./images/leftbutton.jpg" alt="" />
                     </button>
                     <button class="nextbtn">
-                      <img src="./images/rightbutton.jpg" alt="" />
+                      <img src="./images/right-button.jpg" alt="" />
                     </button>
                   </div>
                 </div>
@@ -310,7 +331,7 @@
                                   </div>
                                   <div class="pay-content-right-product">
                                     <div class="cost">Giá tiền</div>
-                                    <div class="quantity-content-right-product">
+                                    <div class="">
                                       <div>Số lượng</div>
                                       <input type="number" value="1" min="1" />
                                     </div>
@@ -350,13 +371,15 @@
               </div>
               <div class="popular">
                 <div class="title-popular">
-                  <div class="title-popular-desc"><h2>Tiêu đề 2</h2></div>
+                  <div class="title-popular-desc">
+                    <h2>Có thể bạn thích</h2>
+                  </div>
                   <div class="title-popular-btn" data-target="list1">
                     <button class="prevbtn">
                       <img src="./images/leftbutton.jpg" alt="" />
                     </button>
                     <button class="nextbtn">
-                      <img src="./images/rightbutton.jpg" alt="" />
+                      <img src="./images/right-button.jpg" alt="" />
                     </button>
                   </div>
                 </div>
@@ -385,6 +408,114 @@
                 </div>
               </div>
             </div>
+          </section>
+          <!-- Phan About -->
+          <section id="about" class="page">
+            <div class="Tittle-gt">
+              <h1 class="gt-h1">GIỚI THIỆU IT-BOOK</h1>
+            </div>
+            <h2>THÔNG TIN GIỚI THIỆU CÔNG TY IT-BOOK</h2>
+            <h3>+ Nguồn nhân lực</h3>
+            <div class="ContentPart1">
+              - Để xây dựng thương hiêu mạnh,một trong những định hướng quan
+              trọng hàng đầu của IT-BOOK là chiến lược phát triển nguồn nhân lực
+              - mấu chốt của mọi sự thành công.
+              <div class="ContentPart1.1">
+                - IT-BOOK gồm những thành viên ưu tú gồm :
+              </div>
+              <div class="nameMembers">
+                Nguyễn Nhật Hào - vai trò :
+                <div>
+                  Lê Thanh Danh - vai trò :
+                  <div>
+                    Trần Thế Hùng - vai trò :
+                    <div>
+                      Phan Lập Thành - vai trò :
+                      <div>
+                        Ngô Thanh Hiếu - vài trò :
+                        <div>Nguyễn Anh Quân - vai trò :</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ContentPart1.2">
+                - Kết hợp tuyển dụng nguồn nhân lực đầu vào có chất lượng và kế
+                hoạch bồi dưỡng kiến thức, rèn luyện bổ sung các kỹ năng và
+                chuẩn bị đội ngũ kế thừa theo hướng chính qui thông qua các lớp
+                học ngắn hạn, dài hạn; các lớp bồi dưỡng được tổ chức trong nước
+                cũng như ở nước ngoài đều được lãnh đạo IT-BOOK đặc biệt quan
+                tâm và tạo điều kiện triển khai thực hiện và đáp ứng nhu cầu
+                ngày càng tăng của công việc cũng như sự phát triển của xã hội
+                đang trên đường hội nhập.
+              </div>
+            </div>
+            <img
+              src="https://hiu.vn/wp-content/uploads/2020/05/Sinh-vi%C3%AAn-HIU-trao-%C4%91%E1%BB%95i-t%E1%BA%A1i-th%C6%B0-vi%E1%BB%87n-C%C6%A1-s%E1%BB%9F-H%C3%B2a-B%C3%ACnh-1.jpg"
+              alt=" "
+              width="500"
+              height="300"
+            />
+            <img
+              src="https://doanhnhanplus.vn/wp-content/uploads/2018/01/nt-library-8.jpg"
+              alt=""
+              width="500"
+              height="300"
+            />
+            <h3>+ Về hàng hóa</h3>
+            <div class="ContentPart2">
+              - Công ty IT-BOOK chuyên môn về các loại sách về công nghệ thông
+              tin (Information Technology), đầy đủ hết tất cả những ngôn ngữ như
+              java,C++,C,python,...
+              <div>
+                - IT-BOOK có tất cả sách dành cho mọi lứa tuổi và mọi nghề liên
+                quan công nghệ
+              </div>
+              <div>- Chúng tôi có cách loại sách như :</div>
+              <div class="BookLists">
+                - Sách lập trình.
+                <div>
+                  - Thiết kế đồ họa.
+                  <div>
+                    - Lập trình Game.
+                    <div>
+                      - Mạng máy tính.
+                      <div>
+                        - Tin học văn phòng.
+                        <div>
+                          - Giáo trình CNTT.
+                          <div>- Lập trình Web.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <img
+              src="https://readvii.com/wp-content/uploads/2020/03/sach-giao-trinh-ky-thuat-lap-trinh-c-can-ban-va-nang-cao-192x300.png"
+              alt=""
+              width="150"
+              height="200"
+            />
+            <img
+              src="https://readvii.com/wp-content/uploads/2020/03/sach-to-hoc-lap-trinh-lam-quen-voi-python-236x300.png"
+              alt=""
+              width="150"
+              height="200"
+            />
+            <img
+              src="https://readvii.com/wp-content/uploads/2020/05/sach-web-thay-doi-the-gioi-nhu-the-nao-tu-nguoi-su-dung-internet-192x300.png"
+              alt=""
+              width="150"
+              height="200"
+            />
+            <img
+              src="https://itviec.com/blog/wp-content/uploads/2016/05/41TuZhOQvKL._SX404_BO1204203200_-244x300.webp"
+              alt=""
+              width="150"
+              height="200"
+            />
           </section>
           <!-- Phần Danh mục sách -->
 
@@ -489,9 +620,7 @@
                                       </div>
                                       <div class="pay-content-right-product">
                                         <div class="cost">Giá tiền</div>
-                                        <div
-                                          class="quantity-content-right-product"
-                                        >
+                                        <div class="">
                                           <div>Số lượng</div>
                                           <input
                                             type="number"
@@ -645,9 +774,7 @@
                                       </div>
                                       <div class="pay-content-right-product">
                                         <div class="cost">Giá tiền</div>
-                                        <div
-                                          class="quantity-content-right-product"
-                                        >
+                                        <div class="">
                                           <div>Số lượng</div>
                                           <input
                                             type="number"
@@ -801,9 +928,7 @@
                                       </div>
                                       <div class="pay-content-right-product">
                                         <div class="cost">Giá tiền</div>
-                                        <div
-                                          class="quantity-content-right-product"
-                                        >
+                                        <div class="">
                                           <div>Số lượng</div>
                                           <input
                                             type="number"
@@ -956,9 +1081,7 @@
                                       </div>
                                       <div class="pay-content-right-product">
                                         <div class="cost">Giá tiền</div>
-                                        <div
-                                          class="quantity-content-right-product"
-                                        >
+                                        <div class="">
                                           <div>Số lượng</div>
                                           <input
                                             type="number"
@@ -1513,6 +1636,8 @@
     </div>
     <!-- ==================== APP END ==================== -->
     <section></section>
+
+    <script src="./js/intialData.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>

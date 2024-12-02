@@ -1,703 +1,3 @@
-// Mock data
-let usersData = [
-  {
-    userId: "U001",
-    name: "Alice Smith",
-    phoneNumber: "987-654-3210",
-    password: "1234567",
-    email: "smith@example.com",
-    status: true,
-    address: "456 Elm St",
-    createdAt: "2023-05-12",
-    numberOfOrder: 3,
-  },
-  {
-    userId: "U002",
-    name: "Bob Johnson",
-    phoneNumber: "321-654-9870",
-    password: "1234567",
-    email: "bob.johnson@example.com",
-    status: true,
-    address: "789 Pine St",
-    createdAt: "2023-06-24",
-    numberOfOrder: 7,
-  },
-  {
-    userId: "U003",
-    name: "Clara Liu",
-    phoneNumber: "654-321-9876",
-    password: "1234567",
-    email: "clara.liu@example.com",
-    status: true,
-    address: "101 Oak St",
-    createdAt: "2022-09-17",
-    numberOfOrder: 2,
-  },
-  {
-    userId: "U004",
-    name: "David Brown",
-    phoneNumber: "789-123-4560",
-    password: "1234567",
-    email: "david.brown@example.com",
-    status: true,
-    address: "234 Maple St",
-    createdAt: "2021-12-30",
-    numberOfOrder: 10,
-  },
-  {
-    userId: "U005",
-    name: "Emily Davis",
-    phoneNumber: "456-789-1234",
-    password: "1234567",
-    email: "emily.davis@example.com",
-    status: true,
-    address: "567 Birch St",
-    createdAt: "2022-04-15",
-    numberOfOrder: 5,
-  },
-  {
-    userId: "U006",
-    name: "Frank White",
-    phoneNumber: "234-567-8901",
-    password: "1234567",
-    email: "frank.white@example.com",
-    status: true,
-    address: "890 Cedar St",
-    createdAt: "2023-02-11",
-    numberOfOrder: 1,
-  },
-  {
-    userId: "U007",
-    name: "Grace Martinez",
-    phoneNumber: "111-222-3333",
-    password: "1234567",
-    email: "grace.martinez@example.com",
-    status: true,
-    address: "123 Willow St",
-    createdAt: "2023-03-29",
-    numberOfOrder: 8,
-  },
-  {
-    userId: "U008",
-    name: "Henry Walker",
-    phoneNumber: "222-333-4444",
-    password: "1234567",
-    email: "henry.walker@example.com",
-    status: true,
-    address: "456 Poplar St",
-    createdAt: "2021-11-19",
-    numberOfOrder: 0,
-  },
-  {
-    userId: "U009",
-    name: "Irene Scott",
-    phoneNumber: "333-444-5555",
-    password: "1234567",
-    email: "irene.scott@example.com",
-    status: true,
-    address: "789 Sycamore St",
-    createdAt: "2022-08-05",
-    numberOfOrder: 12,
-  },
-  {
-    userId: "U010",
-    name: "Jack Lee",
-    password: "1234567",
-    phoneNumber: "444-555-6666",
-    email: "jack.lee@example.com",
-    status: true,
-    address: "101 Palm St",
-    createdAt: "2023-01-21",
-    numberOfOrder: 4,
-  },
-];
-
-let ordersData = [
-  {
-    orderID: "U001",
-    userID: "U001",
-    createdAt: "2024-11-04 10:30",
-    fromVendor: "Hà Nội",
-    status: "Pending",
-    method: "OCD",
-    products: [
-      {
-        id: "P001",
-        quantity: 1,
-      },
-      {
-        id: "P002",
-        quantity: 13,
-      },
-      {
-        id: "P003",
-        quantity: 5,
-      },
-      {
-        id: "P004",
-        quantity: 1,
-      },
-      {
-        id: "P005",
-        quantity: 2,
-      },
-    ],
-  },
-  {
-    orderID: "U002",
-    userID: "U001",
-    createdAt: "2024-11-04 10:30",
-    fromVendor: "Hà Nội",
-    status: "Pending",
-    method: "OCD",
-    products: [
-      {
-        id: "P001",
-        quantity: 2,
-      },
-      {
-        id: "P002",
-        quantity: 5,
-      },
-      {
-        id: "P003",
-        quantity: 1,
-      },
-      {
-        id: "P004",
-        quantity: 10,
-      },
-      {
-        id: "P005",
-        quantity: 1,
-      },
-    ],
-  },
-  {
-    orderID: "U004",
-    userID: "U003",
-    createdAt: "2024-12-04 10:30",
-    fromVendor: "Hà Nội",
-    status: "Pending",
-    method: "OCD",
-    products: [
-      {
-        id: "P001",
-        quantity: 1,
-      },
-      {
-        id: "P002",
-        quantity: 13,
-      },
-      {
-        id: "P003",
-        quantity: 5,
-      },
-      {
-        id: "P004",
-        quantity: 1,
-      },
-      {
-        id: "P005",
-        quantity: 2,
-      },
-    ],
-  },
-  {
-    orderID: "U005",
-    userID: "U002",
-    createdAt: "2024-11-04 10:30",
-    fromVendor: "Hà Nội",
-    status: "Pending",
-    method: "OCD",
-    products: [
-      {
-        id: "P001",
-        quantity: 1,
-      },
-      {
-        id: "P002",
-        quantity: 13,
-      },
-      {
-        id: "P003",
-        quantity: 5,
-      },
-      {
-        id: "P004",
-        quantity: 1,
-      },
-      {
-        id: "P005",
-        quantity: 2,
-      },
-    ],
-  },
-];
-
-let booksData = [
-  {
-    img: "https://www.dbooks.org/img/books/1098127463s.jpg",
-    productID: "P001",
-    title: "Security as Code",
-    price: 450000,
-    language: "English",
-    tags: ["Security", "DevOps"],
-    author: "John Doe",
-    description:
-      "A comprehensive guide to implementing security as code in your CI/CD pipelines.",
-    pages: 250,
-    subject: "Cybersecurity",
-    publicationDate: "2023-10-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/164200233Xs.jpg",
-    productID: "P002",
-    title: "ASP.NET Core 6 Succinctly",
-    price: 300000,
-    language: "English",
-    tags: ["ASP.NET", "Web Development"],
-    author: "Jane Smith",
-    description:
-      "A concise guide to developing web applications using ASP.NET Core 6.",
-    pages: 150,
-    subject: "Web Development",
-    publicationDate: "2022-08-15",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5709901124s.jpg",
-    productID: "P003",
-    title: "Build a Raspberry Pi Media Player",
-    price: 280000,
-    language: "English",
-    tags: ["Raspberry Pi", "DIY"],
-    author: "Mark Johnson",
-    description:
-      "Learn how to turn your Raspberry Pi into a powerful media player.",
-    pages: 100,
-    subject: "DIY Projects",
-    publicationDate: "2022-05-20",
-    genre: "Technical",
-    createdAt: "2024-11-01",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/191204742Xs.jpg",
-    productID: "P004",
-    title: "The Official Raspberry Pi Handbook 2023",
-    price: 350000,
-    language: "English",
-    tags: ["Raspberry Pi", "Guide"],
-    author: "Raspberry Pi Foundation",
-    description:
-      "The ultimate guide to getting the most out of your Raspberry Pi.",
-    pages: 400,
-    subject: "DIY Projects",
-    publicationDate: "2023-01-10",
-    genre: "Technical",
-    createdAt: "2024-11-09",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1642002275s.jpg",
-    productID: "P005",
-    title: "Azure Bot Service Succinctly",
-    price: 250000,
-    language: "English",
-    tags: ["Azure", "Bots"],
-    author: "Emily Davis",
-    description:
-      "A quick introduction to building bots using Azure Bot Service.",
-    pages: 120,
-    subject: "Cloud Computing",
-    publicationDate: "2023-03-01",
-    genre: "Technical",
-    createdAt: "2024-11-20",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1098111389s.jpg",
-    productID: "P006",
-    title: "Managing Cloud Native Data on Kubernetes",
-    price: 400000,
-    language: "English",
-    tags: ["Kubernetes", "Cloud"],
-    author: "David Brown",
-    description:
-      "Strategies for managing data in cloud-native applications on Kubernetes.",
-    pages: 300,
-    subject: "Cloud Computing",
-    publicationDate: "2023-09-01",
-    genre: "Technical",
-    createdAt: "2024-11-19",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1912047446s.jpg",
-    productID: "P007",
-    title: "An Introduction to C & GUI Programming",
-    price: 320000,
-    language: "English",
-    tags: ["C", "GUI", "Programming"],
-    author: "Sarah White",
-    description:
-      "A beginner's guide to programming in C and creating graphical user interfaces.",
-    pages: 180,
-    subject: "Programming",
-    publicationDate: "2022-06-30",
-    genre: "Technical",
-    createdAt: "2024-11-30",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5685527822s.jpg",
-    productID: "P008",
-    title: "HackSpace Magazine: Issue 65",
-    price: 150000,
-    language: "English",
-    tags: ["Magazine", "Hacking"],
-    author: "Various",
-    description:
-      "The latest issue of HackSpace Magazine covering exciting projects and tutorials.",
-    pages: 70,
-    subject: "Hacking",
-    publicationDate: "2023-11-01",
-    genre: "Magazine",
-    createdAt: "2024-11-25",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5685535457s.jpg",
-    productID: "P009",
-    title: "Intro to Social Media",
-    price: 200000,
-    language: "English",
-    tags: ["Social Media", "Marketing"],
-    author: "Lisa Green",
-    description:
-      "An introduction to the world of social media and its impact on marketing.",
-    pages: 220,
-    subject: "Marketing",
-    publicationDate: "2023-05-15",
-    genre: "Business",
-    createdAt: "2024-11-08",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5679752518s.jpg",
-    productID: "P010",
-    title: "HackSpace magazine: Issue 64",
-    price: 150000,
-    language: "English",
-    tags: ["Magazine", "Hacking"],
-    author: "Various",
-    description:
-      "Another exciting issue of HackSpace Magazine with new projects.",
-    pages: 72,
-    subject: "Hacking",
-    publicationDate: "2023-09-01",
-    genre: "Magazine",
-    createdAt: "2024-11-21",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1642002305s.jpg",
-    productID: "P011",
-    title: "Svelte Succinctly",
-    price: 280000,
-    language: "English",
-    tags: ["Svelte", "Web Development"],
-    author: "Tom Williams",
-    description:
-      "An introduction to building web applications using the Svelte framework.",
-    pages: 140,
-    subject: "Web Development",
-    publicationDate: "2022-07-01",
-    genre: "Technical",
-    createdAt: "2024-11-03",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/111954601Xs.jpg",
-    productID: "P012",
-    title: "Blockchain For Dummies",
-    price: 320000,
-    language: "English",
-    tags: ["Blockchain", "Finance"],
-    author: "P. K. Mishra",
-    description:
-      "A beginner-friendly guide to understanding blockchain technology.",
-    pages: 180,
-    subject: "Finance",
-    publicationDate: "2021-11-05",
-    genre: "Business",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1642002283s.jpg",
-    productID: "P013",
-    title: "ASP.NET Core APIs Succinctly",
-    price: 300000,
-    language: "English",
-    tags: ["ASP.NET", "Web Development"],
-    author: "Jane Smith",
-    description: "A concise guide to building APIs with ASP.NET Core.",
-    pages: 160,
-    subject: "Web Development",
-    publicationDate: "2022-09-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1492095176s.jpg",
-    productID: "P014",
-    title: "A Practical Guide to Cloud Migration",
-    price: 370000,
-    language: "English",
-    tags: ["Cloud", "Migration"],
-    author: "Mark Smith",
-    description:
-      "Strategies for migrating your applications to the cloud effectively.",
-    pages: 250,
-    subject: "Cloud Computing",
-    publicationDate: "2023-02-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5676984863s.jpg",
-    productID: "P015",
-    title: "HackSpace Magazine: Issue 63",
-    price: 150000,
-    language: "English",
-    tags: ["Magazine", "Hacking"],
-    author: "Various",
-    description:
-      "Explore new hacks and projects in this issue of HackSpace Magazine.",
-    pages: 70,
-    subject: "Hacking",
-    publicationDate: "2023-07-01",
-    genre: "Magazine",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1642002267s.jpg",
-    productID: "P016",
-    title: "Azure Maps Using Blazor Succinctly",
-    price: 260000,
-    language: "English",
-    tags: ["Azure", "Blazor"],
-    author: "Helen Carter",
-    description: "Build interactive maps in Blazor using Azure Maps.",
-    pages: 150,
-    subject: "Web Development",
-    publicationDate: "2023-05-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1491931663s.jpg",
-    productID: "P017",
-    title: "C++ Today",
-    price: 350000,
-    language: "English",
-    tags: ["C++", "Programming"],
-    author: "Sam Lee",
-    description: "A modern guide to C++ programming and its applications.",
-    pages: 280,
-    subject: "Programming",
-    publicationDate: "2022-03-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5672335136s.jpg",
-    productID: "P018",
-    title: "Clojure In Small Pieces",
-    price: 400000,
-    language: "English",
-    tags: ["Clojure", "Functional Programming"],
-    author: "William Brown",
-    description: "A deep dive into Clojure and its practical applications.",
-    pages: 300,
-    subject: "Programming",
-    publicationDate: "2022-12-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1119824281s.jpg",
-    productID: "P019",
-    title: "Redis For Dummies",
-    price: 320000,
-    language: "English",
-    tags: ["Redis", "Databases"],
-    author: "Jim Green",
-    description:
-      "An easy-to-understand introduction to Redis and its capabilities.",
-    pages: 150,
-    subject: "Databases",
-    publicationDate: "2021-10-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1492038253s.jpg",
-    productID: "P020",
-    title: "Designing Event-Driven Systems",
-    price: 400000,
-    language: "English",
-    tags: ["Event-Driven", "Architecture"],
-    author: "Nina White",
-    description: "Guidelines for building robust event-driven architectures.",
-    pages: 350,
-    subject: "Software Architecture",
-    publicationDate: "2022-04-01",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/1938616049s.jpg",
-    productID: "P021",
-    title: "Erlang Handbook",
-    price: 280000,
-    language: "English",
-    tags: ["Erlang", "Programming"],
-    author: "Alice Black",
-    description: "A complete guide to Erlang programming.",
-    pages: 200,
-    subject: "Programming",
-    publicationDate: "2021-12-15",
-    genre: "Technical",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-  {
-    img: "https://www.dbooks.org/img/books/5671111456s.jpg",
-    productID: "P022",
-    title: "HackSpace Magazine: Issue 62",
-    price: 150000,
-    language: "English",
-    tags: ["Magazine", "Hacking"],
-    author: "Various",
-    description:
-      "The latest projects and tutorials from the HackSpace community.",
-    pages: 75,
-    subject: "Hacking",
-    publicationDate: "2023-05-01",
-    genre: "Magazine",
-    createdAt: "2024-11-04",
-    inStock: 10,
-    ratting: 4.8,
-    numberOfsale: 10,
-  },
-];
-
-let salesData = [
-  {
-    saleId: "S001",
-    orderId: "U001",
-    userId: "U001",
-    quantity: 1,
-    productID: "P001",
-    createdAt: "2024-11-04",
-  },
-  {
-    saleId: "S002",
-    orderId: "U001",
-    userId: "U002",
-    quantity: 2,
-    productID: "P001",
-    createdAt: "2024-11-04",
-  },
-  {
-    saleId: "S003",
-    orderId: "U001",
-    userId: "U001",
-    quantity: 3,
-    productID: "P003",
-    createdAt: "2024-11-04",
-  },
-  {
-    saleId: "S004",
-    orderId: "U001",
-    userId: "U001",
-    quantity: 4,
-    productID: "P005",
-    createdAt: "2024-11-04",
-  },
-  {
-    saleId: "S005",
-    orderId: "U001",
-    userId: "U001",
-    quantity: 5,
-    productID: "P006",
-    createdAt: "2024-11-04",
-  },
-];
-
-// let books;
-// let orders;
-// let users;
-// let sales;
-
 // Define class global
 const CLASSNAME = {
   CLOSESIDEBAR: "open__sidebar",
@@ -705,13 +5,6 @@ const CLASSNAME = {
   ACTIVEMENU: "active__menu",
   CLASSDARKMODE: "dark",
   OPENFILTER: "open__filter",
-};
-
-const KEY = {
-  BOOKS: "books",
-  USERS: "users",
-  ORDER: "orders",
-  SALES: "sales",
 };
 
 // Utils
@@ -778,6 +71,27 @@ function renderNotFound(element, message) {
   element.innerHTML = html;
 }
 
+// TOAST
+const TYPE = {
+  ERROR: "error",
+  SUCCESS: "success",
+  WARNING: "warning",
+};
+const nofitication = document.querySelector(".nofitication");
+function createToast(type, icon, content) {
+  const toastElement = document.createElement("div");
+  toastElement.innerHTML = `
+          ${icon}
+          <p>${content}</p>
+        `;
+  toastElement.classList.add("toast");
+  toastElement.classList.add(type);
+  nofitication.appendChild(toastElement);
+  setTimeout(() => {
+    toastElement.remove();
+  }, 5000);
+}
+
 // Init data
 function initializeLocalStorage(key, defaultData) {
   if (!getLocalStorage(key)) {
@@ -785,24 +99,6 @@ function initializeLocalStorage(key, defaultData) {
   }
   return getLocalStorage(key);
 }
-
-// function getFilePathAndPreview(inputId) {
-//   const fileInput = document.getElementById(inputId); // Lấy phần tử input file
-//   fileInput.addEventListener("change", function (event) {
-//     const file = event.target.files[0];
-//     if (file) {
-//       const fileName = file.name; // Tên tệp
-//       const fileType = file.type; // Loại tệp (ví dụ: image/jpeg)
-//       const filePath = URL.createObjectURL(file); // Tạo Object URL từ tệp
-
-//       console.log("File Name: ", fileName);
-//       console.log("File Type: ", fileType);
-//       console.log("File Path: ", filePath); // Đây là Object URL tạm thời
-
-//       return { fileName, filePath };
-//     }
-//   });
-// }
 
 function getFilePathAndPreview(inputId) {
   const fileInput = document.getElementById(inputId);
@@ -820,7 +116,6 @@ function getFilePathAndPreview(inputId) {
 
 function convertFileImg(pathImg) {
   const filePath = URL.createObjectURL(pathImg);
-  console.log("File Path: ", filePath);
   return filePath;
 }
 
@@ -918,27 +213,6 @@ function handleActiveNav(listNav) {
   });
 }
 
-// function changePage() {
-//   const listNavLink = document.querySelectorAll(".nav__link");
-//   listNavLink.forEach((navLink) => {
-//     navLink.addEventListener("click", (e) => {
-//       listNavLink.forEach((item) => {
-//         item.classList.remove("page__show"); // This should remove the class from all nav links
-//       });
-
-//       const idPage = navLink.getAttribute("data-page");
-//       const page = document.getElementById(idPage);
-
-//       // Only add 'page__show' if the page is found
-//       if (page) {
-//         page.classList.add("page__show");
-//       } else {
-//         console.error("Page not found with id:", idPage);
-//       }
-//     });
-//   });
-// }
-
 // Handle open/close modal
 function openModal(boxModel, className) {
   boxModel.classList.add(className);
@@ -970,7 +244,6 @@ function calculatorPrice(order) {
   let books = getLocalStorage(KEY.BOOKS);
   let total = order.products.reduce((initValue, product) => {
     const book = books[getIndexProduct(product.id)];
-    console.log(book.price);
     return initValue + book.price * parseInt(product.quantity);
   }, 0);
   if (order.code < 1 && order.code > 0) {
@@ -1015,11 +288,11 @@ function updateTableOrder(data) {
         <td class="table__col" data-cell="Status">
           <span class=${statusClassName}>${order.status}</span>
         </td>
-        <td class="table__col" data-cell="Action">
+        <td class="table__col" data-cell="Action" id="order__action">
           <button class="update-btn btn" onclick="handleOpenOrderDetail('${order.orderID}')">Detail</button>
           <button class="delete-btn btn" onclick="deleteOrder('${order.orderID}')">Delete</button>
         </td>
-        <td class="table__col" data-cell="From Vendor">
+        <td class="table__col" data-cell="Submit/Reject">
           <button class="submit-btn btn" onclick="completedOrder('${order.orderID}')">Submit</button>
           <button class="cancel-btn btn" onclick="rejectOrder('${order.orderID}')">Cancel</button>
         </td>
@@ -1065,8 +338,9 @@ function handleOpenOrderDetail(orderID) {
   document.getElementById("user__id").innerText = order.userID;
   document.getElementById("order__status").value = order.status;
   document.getElementById("from__vendor").innerText = order.fromVendor;
-  document.getElementById("total__money").innerHTML =
-    calculatorPrice(order) + " VND";
+  document.getElementById("total__money").innerHTML = formatVND(
+    calculatorPrice(order)
+  );
   renderListProductOrder(order.products);
   const orderModal = document.querySelector("#order__modal");
   openModal(orderModal, CLASSNAME.OPENFILTER);
@@ -1095,6 +369,11 @@ function submitUpdateOrder() {
   orders = getLocalStorage(KEY.ORDER);
   updateTableOrder(orders);
   handleCloseOrderModal();
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Cập nhật order thành công"
+  );
 }
 
 function deleteOrder(orderID) {
@@ -1104,6 +383,11 @@ function deleteOrder(orderID) {
     setLocalStorage(KEY.ORDER, orders);
     orders = getLocalStorage(KEY.ORDER);
     updateTableOrder(orders);
+    createToast(
+      TYPE.SUCCESS,
+      "<i class='fa-solid fa-check'></i>",
+      "Xóa đơn hàng thành công"
+    );
   }
 }
 
@@ -1128,7 +412,13 @@ function completedOrder(orderID) {
     setLocalStorage(KEY.ORDER, orders);
     orders = getLocalStorage(KEY.ORDER);
     updateTableOrder(orders);
+    createToast(
+      TYPE.SUCCESS,
+      "<i class='fa-solid fa-check'></i>",
+      "Cập nhật tình trạng đơn hàng thành công"
+    );
   }
+  updateDataStats();
 }
 
 const searchOrderInput = document.querySelector("#order__search input");
@@ -1148,6 +438,7 @@ function reactiveSearchOrder(searchInput, data) {
 
 function handleOrderFilter() {
   const orders = getLocalStorage(KEY.ORDER);
+
   const dateStart = document.querySelector("#filter__form #date__start");
   const dateEnd = document.querySelector("#filter__form #date__end");
   const address = document.querySelector("#filter__form #order__address");
@@ -1158,15 +449,20 @@ function handleOrderFilter() {
 
   const dataFiltered = orders.filter((item) => {
     const orderDate = new Date(item.createdAt.split(" ")[0]);
-    const isWithinDateRange = orderDate >= startDate && orderDate <= endDate;
-    const isAddressMatched = address.value
-      ? item.fromVendor.includes(address.value)
-      : true;
-    const isStatusMatched = status.value ? item.status === status.value : true;
+
+    const isWithinDateRange =
+      (isNaN(startDate) && isNaN(endDate)) ||
+      (orderDate >= startDate && orderDate <= endDate);
+
+    const isAddressMatched =
+      !address.value || item.fromVendor.includes(address.value);
+
+    const isStatusMatched = !status.value || item.status === status.value;
+
     return isWithinDateRange && isAddressMatched && isStatusMatched;
   });
 
-  // Hiển thị kết quả lọc (có thể hiển thị hoặc xử lý tiếp tùy nhu cầu)
+  // Update the table and close the filter modal
   updateTableOrder(dataFiltered);
   const filterModal = document.getElementById("filter__modal");
   closeModal(filterModal, CLASSNAME.OPENFILTER);
@@ -1194,7 +490,7 @@ function updateTableProduct(databook) {
         <td class="table__col" data-cell="Ngày thêm">${book.createdAt}</td>
         <td class="table__col" data-cell="Hành động">
           <button class="btn__action" onclick="handleOpenProductModelDetail('${book.productID}')">
-            <i class="uil uil-wrench body-1"></i>
+            <i class="uil uil-file-info-alt body-1"></i>
           </button>
           <button class="btn__action" onclick="deleteProduct('${book.productID}')">
             <i class="uil uil-trash body-1"></i>
@@ -1256,7 +552,13 @@ function submitUpdateProduct() {
   books = getLocalStorage(KEY.BOOKS);
   updateTableProduct(books);
   handleCloseProductModelDetail();
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Cập nhật sách thành công"
+  );
 }
+
 function deleteProduct(productID) {
   const isConfirm = window.confirm("Ban co muon xoa san pham nay");
   if (isConfirm) {
@@ -1264,10 +566,14 @@ function deleteProduct(productID) {
     setLocalStorage(KEY.BOOKS, books);
     books = getLocalStorage(KEY.BOOKS);
     updateTableProduct(books);
+    createToast(
+      TYPE.SUCCESS,
+      "<i class='fa-solid fa-check'></i>",
+      "Xóa sách thành công"
+    );
   }
 }
 
-const searchProductInput = document.querySelector("#warehouse__search input");
 function reactiveSearchProduct(searchInput, data) {
   searchInput.addEventListener("input", (e) => {
     const searchValue = e.target.value;
@@ -1342,6 +648,11 @@ function submitNewProduct() {
   bookModalAdd.querySelectorAll("input").forEach((input) => {
     input.value = "";
   });
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Thêm sách thành công"
+  );
 }
 
 // Fetaure in Management User
@@ -1351,21 +662,44 @@ function findUserByUserID(userID) {
   return user;
 }
 
+function findUserByEmail(email) {
+  const users = getLocalStorage(KEY.USERS);
+  return users.find((user) => user.email === email);
+}
+
 function getIndexUser(userID) {
+  const users = getLocalStorage(KEY.USERS);
   const index = users.findIndex((user) => user.userId === userID);
   return index;
 }
 
+function calculatorNumberOfOrder(userID) {
+  const orders = getLocalStorage(KEY.ORDER);
+  let numberOfOrder = orders.reduce((initCounter, order) => {
+    if (order.userID === userID) {
+      initCounter++;
+    }
+    return initCounter;
+  }, 0);
+
+  return numberOfOrder;
+}
+
 function handleOpenModalDetail(payload) {
+  const users = getLocalStorage(KEY.USERS);
   const index = getIndexUser(payload);
   const user = users[index];
+  const status = user.status ? "active" : "ban";
   document.getElementById("user__id").innerText = user.userId;
   document.getElementById("user__name").value = user.name;
   document.getElementById("user__phone").value = user.phoneNumber;
   document.getElementById("user__email").value = user.email;
   document.getElementById("user__address").value = user.address;
+  document.getElementById("user__status").innerHTML = status;
   document.getElementById("user__created").innerText = user.createdAt;
-  document.getElementById("user__orders").innerText = user.numberOfOrder;
+  document.getElementById("user__orders").innerText = calculatorNumberOfOrder(
+    user.userId
+  );
   const userModal = document.getElementById("user__modal");
   openModal(userModal, CLASSNAME.OPENFILTER);
 }
@@ -1380,15 +714,15 @@ function updateUserTable(data) {
   tbody.innerHTML = "";
   const html = data
     .map((user) => {
-      const status = user.status ? "ban" : "active";
+      const status = user.status ? "active" : "ban";
       return `
             <tr class="table__row">
-                <td class="table__col" data-cell="USER ID">${user.userId}</td>
-                <td class="table__col" data-cell="NAME">${user.name}</td>
-                <td class="table__col" data-cell="PHONE NUMBER">${user.phoneNumber}</td>
-                <td class="table__col" data-cell="ADDRESS">${user.address}</td>
-                <td class="table__col" data-cell="Status">${status}</td>
-                <td class="table__col" data-cell="ACTION">
+                <td class="table__col" data-cell="ID người dùng">${user.userId}</td>
+                <td class="table__col" data-cell="Tên">${user.name}</td>
+                <td class="table__col" data-cell="SĐT">${user.phoneNumber}</td>
+                <td class="table__col" data-cell="Địa chỉ">${user.address}</td>
+                <td class="table__col" data-cell="Tình trạng">${status}</td>
+                <td class="table__col" data-cell="Hành động">
                     <button class="update-btn" onclick="handleOpenModalDetail('${user.userId}')">Detail</button>
                     <button class="delete-btn" onclick="deleteUser('${user.userId}')">Delete</button>
                     <button class="delete-btn" onclick="banUser('${user.userId}')">Ban</button>
@@ -1415,6 +749,11 @@ function submitUpdate() {
 
   handleCloseUserModal();
   updateUserTable(getLocalStorage(KEY.USERS));
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Cập nhật thông tin người dùng thành công"
+  );
 }
 
 function deleteUser(userID) {
@@ -1424,6 +763,11 @@ function deleteUser(userID) {
     users = users.filter((user) => user.userId !== userID);
     setLocalStorage(KEY.USERS, users);
     updateUserTable(getLocalStorage(KEY.USERS));
+    createToast(
+      TYPE.SUCCESS,
+      "<i class='fa-solid fa-check'></i>",
+      "Xóa người dùng thành công"
+    );
   }
 }
 
@@ -1432,8 +776,7 @@ function banUser(userId) {
   if (isConfirm) {
     let users = getLocalStorage(KEY.USERS);
     const index = getIndexUser(userId);
-    users[index].status = true;
-    console.log(users[index]);
+    users[index].status = false;
     setLocalStorage(KEY.USERS, users);
     handleCloseUserModal();
     updateUserTable(getLocalStorage(KEY.USERS));
@@ -1446,6 +789,13 @@ function handleOpenUserModalAdd() {
 }
 
 function createNewUser() {
+  const user = findUserByEmail(
+    document.getElementById("user__email__add").value
+  );
+  if (user) {
+    alert("Email đã được đăng kí!");
+    return;
+  }
   const createUserId = createIdGenerator();
   const newUser = {
     userId: createUserId(),
@@ -1457,12 +807,16 @@ function createNewUser() {
     createdAt: getDate(),
     numberOfOrder: 0,
   };
-  console.log(newUser);
   let users = getLocalStorage(KEY.USERS);
   users.push(newUser);
   setLocalStorage(KEY.USERS, users);
   updateUserTable(getLocalStorage(KEY.USERS));
   handleCloseUserModalAdd();
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Thêm người dùng thành công"
+  );
 }
 
 function handleCloseUserModalAdd() {
@@ -1505,8 +859,11 @@ function filterDataByDateRange(data, start, end) {
 
 function calculatorIncome(data) {
   let income = data.reduce((initValue, order) => {
-    let total = calculatorPrice(order);
-    return initValue + total;
+    if (order.status === STATUSORDER.COMPLETED) {
+      let total = calculatorPrice(order);
+      return initValue + total;
+    }
+    return initValue;
   }, 0);
   injectValueIntoElement(
     document.querySelector("#stats__incom .quantity"),
@@ -1516,7 +873,6 @@ function calculatorIncome(data) {
 
 function calculatorSumRecord(data, element) {
   const records = data.length;
-  // return income;
   injectValueIntoElement(element, records);
 }
 
@@ -1597,7 +953,7 @@ function updateStatisticsUsers(listState) {
       return `
       <tr class="table__row">
         <td class="table__col" data-cell="UserID">${user.userId}</td>
-        <td class="table__col" data-cell="UserName">${user.name}</td>
+        <td class="table__col" data-cell="Tên">${user.name}</td>
         <td class="table__col" data-cell="Email">${user.email}</td>
         <td class="table__col" data-cell="Số điện thoại">${user.phoneNumber}</td>
         <td class="table__col" data-cell="Số đơn">${stats[1].numberOfBuy}</td>
@@ -1617,7 +973,6 @@ function sortTopProductByBuy(listStateProduct) {
   const conditionOption = document.getElementById("product__condition");
   conditionOption.addEventListener("change", (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     switch (e.target.value) {
       case CONDITION__SORT__PRODUCT.BUY__MAX:
         const sortStatsAsc = listStateProduct.sort(
@@ -1641,13 +996,11 @@ function sortTopUserBuyAmount(listStatsUser) {
   const conditionOption = document.getElementById("user__condition");
   conditionOption.addEventListener("change", (e) => {
     e.preventDefault();
-    console.log(e.target.value);
     switch (e.target.value) {
       case CONDITION__SORT__PRODUCT.BUY__MAX:
         const sortStatsAsc = listStatsUser.sort(
           (a, b) => b[1].amountSpent - a[1].amountSpent
         );
-        console.log(sortStatsAsc);
         updateStatisticsUsers(sortStatsAsc);
         break;
       case CONDITION__SORT__PRODUCT.BUY__MIN:
@@ -1701,6 +1054,10 @@ function handleStats() {
     const listState = Object.entries(stats);
     updateStatisticsProduct(listState);
     sortTopProductByBuy();
+    const statsUser = getStatisticsUsers(filterOrders);
+    const listStatsUser = Object.entries(statsUser);
+    updateStatisticsUsers(listStatsUser);
+    sortTopUserBuyAmount(listStatsUser);
   } else {
     let books = getLocalStorage(KEY.BOOKS);
     let users = getLocalStorage(KEY.USERS);
@@ -1759,10 +1116,14 @@ function renderListOrderOfProduct(productID) {
       return `
       <tr class="table__row">
         <td class="table__col" data-cell="OrderID">${order.orderID}</td>
-        <td class="table__col" data-cell="ProductID">${order.id}</td>
-        <td class="table__col" data-cell="UserID">${order.userID}</td>
+        <td class="table__col" data-cell="ProductID">${order.userID}</td>
         <td class="table__col" data-cell="Số lượng">${order.quantity}</td>
         <td class="table__col" data-cell="Thành tiền">${formatVND(total)}</td>
+        <td class="table__col" data-cell="Chi tiết">
+          <button class="action__button" onclick="handleOpenOrderDetail('${
+            order.orderID
+          }')">Detail</button>
+        </td>
       </tr>
     `;
     })
@@ -1780,11 +1141,15 @@ function renderListOrderOfUser(userID) {
     const quantity = caculatorProduct(order);
     return `
       <tr class="table__row">
-        <td class="table__col" data-cell="OrderID">${order.orderID}</td>
-        <td class="table__col" data-cell="ProductID">${order.id}</td>
-        <td class="table__col" data-cell="UserID">${order.userID}</td>
+        <td class="table__col" data-cell="ID đơn hàng">${order.orderID}</td>
+        <td class="table__col" data-cell="Ngày tạo">${order.createdAt}</td>
         <td class="table__col" data-cell="Số lượng">${quantity}</td>
         <td class="table__col" data-cell="Thành tiền">${formatVND(total)}</td>
+        <td class="table__col" data-cell="Chi tiết">
+          <button class="action__button" onclick="handleOpenOrderDetail('${
+            order.orderID
+          }')">Detail</button>
+        </td>
       </tr>
     `;
   });
@@ -1832,7 +1197,7 @@ function handleOpenUserStatsModal(userID) {
   openModal(userStatsModal, CLASSNAME.OPENFILTER);
   renderListOrderOfUser(userID);
 }
-const searchUserInput = document.querySelector("#users__search input");
+
 function reactiveSearchUser(searchInput, data) {
   searchInput.addEventListener("input", (e) => {
     const searchValue = e.target.value;
@@ -1847,6 +1212,60 @@ function reactiveSearchUser(searchInput, data) {
   });
 }
 
+// Feature OF Admin
+function intializeInfoAdmin() {
+  const admin = getLocalStorage("admin");
+  document.getElementById("admin__id").textContent = admin.adminID;
+  document.getElementById("admin__name").textContent = admin.name;
+  document.getElementById("admin__email").textContent = admin.email;
+  document.getElementById("admin__address").textContent = admin.address;
+  document.getElementById("admin__phone").textContent = admin.phoneNumber;
+  document.getElementById("admin__created").textContent = admin.createdAt;
+}
+
+function handleOpenAdminUpdateModal() {
+  const adminUpdateModal = document.getElementById("admin__modal");
+  openModal(adminUpdateModal, CLASSNAME.OPENFILTER);
+  const admin = getLocalStorage("admin");
+  document.getElementById("admin__name__update").value = admin.name;
+  document.getElementById("admin__email__update").value = admin.email;
+  document.getElementById("admin__address__update").value = admin.address;
+  document.getElementById("admin__password__update").value = admin.password;
+  document.getElementById("admin__phone__update").value = admin.phoneNumber;
+}
+
+function submitUpdateAdmin() {
+  let admin = getLocalStorage("admin");
+  const updateAdmin = {
+    name: document.getElementById("admin__name__update").value,
+    email: document.getElementById("admin__email__update").value,
+    address: document.getElementById("admin__address__update").value,
+    password: document.getElementById("admin__password__update").value,
+    phoneNumber: document.getElementById("admin__phone__update").value,
+  };
+
+  admin = { ...admin, ...updateAdmin };
+  let admins = getLocalStorage(KEY.ADMINS);
+  const indexAdminInDB = admins.findIndex(
+    (adminDB) => adminDB.adminID === admin.adminID
+  );
+  admins[indexAdminInDB] = admin;
+  setLocalStorage("admin", admin);
+  setLocalStorage(KEY.ADMINS, admins);
+  intializeInfoAdmin();
+  handleCloseAdminUpdateModal();
+  createToast(
+    TYPE.SUCCESS,
+    "<i class='fa-solid fa-check'></i>",
+    "Cập nhật thông tin admin thành công"
+  );
+}
+
+function handleCloseAdminUpdateModal() {
+  const adminUpdateModal = document.getElementById("admin__modal");
+  closeModal(adminUpdateModal, CLASSNAME.OPENFILTER);
+}
+
 // Get Elememt for feature Oreder Filter Modal
 const btnOpenFilter = document.querySelector(".btn__filter");
 const btnCloseFilter = document.querySelector("#filter__close");
@@ -1856,13 +1275,13 @@ const filterModal = document.querySelector("#filter__modal");
 const body = document.querySelector("body");
 const btnTheme = document.querySelector("#btn__mode");
 
+const searchUserInput = document.querySelector("#users__search input");
+const searchProductInput = document.querySelector("#warehouse__search input");
+
 // Initial Website
 
 function initialApp() {
-  books = initializeLocalStorage(KEY.BOOKS, booksData);
-  users = initializeLocalStorage(KEY.USERS, usersData);
-  orders = initializeLocalStorage(KEY.ORDER, ordersData);
-  sales = initializeLocalStorage(KEY.SALES, salesData);
+  intializeInfoAdmin();
   updateDataStats();
   handleChangeMode(body, btnTheme);
   handleActiveNav(navItems);
@@ -1882,5 +1301,3 @@ function initialApp() {
 }
 
 initialApp();
-// gmail admin@gmail.com
-// password: 123456

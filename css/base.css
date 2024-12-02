@@ -37,6 +37,9 @@
   --shadown-table: 0px 4px 12px rgba(0, 0, 0, 0.1);
   --shadown-card: 0px 4px 12px rgba(0, 0, 0, 0.1);
   --header: rgb(253, 168, 182);
+  --success-color: #28a745; /* Màu cho trạng thái thành công (Success) */
+  --warning-color: #ffc107; /* Màu cho trạng thái cảnh báo (Warning) */
+  --error-color: #dc3545; /* Màu cho trạng thái lỗi (Error) */
 }
 
 .dark {
@@ -50,7 +53,8 @@
   --button-color: #007bff;
   /* Border */
   --border-color: #383838;
-  --shadown-card: 0px 4px 12px rgba(255, 255, 255, 0.1);
+  --shadown-card: 0px 4px 12px rgba(255, 255, 255, 0.2);
+  --shadown-table: 0px 4px 12px rgba(255, 255, 255, 0.2);
   --header: rgb(207, 55, 80);
 }
 

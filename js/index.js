@@ -1,9 +1,3 @@
-const KEY = {
-  BOOKS: "books",
-  USERS: "users",
-  ORDER: "orders",
-};
-
 let currentUserEmail = "";
 
 function findUserByEmail(email) {
@@ -65,25 +59,9 @@ function getDateTime() {
   return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-// Phan bo sung
-function getLocalStorage(key) {
-  const data = localStorage.getItem(key);
-  return data ? JSON.parse(data) : null;
-}
-function setLocalStorage(key, value) {
-  if (value !== undefined) {
-    localStorage.setItem(key, JSON.stringify(value));
-  }
-}
-
-const products = getLocalStorage(KEY.BOOKS);
-
-// Init data
-function initializeLocalStorage(key, defaultData) {
-  if (!getLocalStorage(key)) {
-    setLocalStorage(key, defaultData);
-  }
-  return getLocalStorage(key);
+function findProductByID(productID) {
+  let books = getLocalStorage(KEY.BOOKS);
+  return books.find((book) => book.productID === productID);
 }
 
 // Show menu mobile
@@ -723,7 +701,7 @@ function xemchitiet(button) {
     speProductItem.querySelector(".product-title").innerText =
       "Tên :" + product.title;
     speProductItem.querySelector(".product-rating").innerText =
-      "Số sao :" + product.rating;
+      "Số sao :" + product.ratting;
     speProductItem.querySelector(".product-category").innerText =
       "Thể loại :" + product.subject;
     speProductItem.querySelector(".product-language").innerText =
@@ -755,13 +733,13 @@ function xemchitiet(button) {
     speProductItem.querySelector(".product-title").innerText =
       "Tên :" + product_1.title;
     speProductItem.querySelector(".product-rating").innerText =
-      "Số sao :" + product_1.rating;
+      "Số sao :" + product_1.ratting;
     speProductItem.querySelector(".product-category").innerText =
       "Thể loại :" + product_1.subject;
     speProductItem.querySelector(".product-language").innerText =
       "Ngôn ngữ :" + product_1.language;
     speProductItem.querySelector(".product-pages").innerText =
-      "Số trang :" + product_1.page;
+      "Số trang :" + product_1.pages;
     speProductItem.querySelector(".cost").innerText = "Giá :" + product_1.price;
     speProductItem.querySelector(".product-des").innerText =
       product_1.description;
@@ -776,8 +754,9 @@ function xemchitiet(button) {
   else if (list === "AI_page") {
     const filterdProducts = products.filter(
       (product) =>
-        product.subject === "Software Architecture" ||
-        product.subject === "Cybersecurity"
+        product.subject === "Cloud Computing" ||
+        product.subject === "Database" ||
+        product.subject === "Programming"
     );
     const product_1 = filterdProducts.find(
       (p) => p.productID == selectedProductID
@@ -789,13 +768,13 @@ function xemchitiet(button) {
     speProductItem.querySelector(".product-title").innerText =
       "Tên :" + product_1.title;
     speProductItem.querySelector(".product-rating").innerText =
-      "Số sao :" + product_1.rating;
+      "Số sao :" + product_1.ratting;
     speProductItem.querySelector(".product-category").innerText =
       "Thể loại :" + product_1.subject;
     speProductItem.querySelector(".product-language").innerText =
       "Ngôn ngữ :" + product_1.language;
     speProductItem.querySelector(".product-pages").innerText =
-      "Số trang :" + product_1.page;
+      "Số trang :" + product_1.pages;
     speProductItem.querySelector(".cost").innerText = "Giá :" + product_1.price;
     speProductItem.querySelector(".product-des").innerText =
       product_1.description;
@@ -808,8 +787,7 @@ function xemchitiet(button) {
   } else if (list === "DATA_page") {
     const filterdProducts = products.filter(
       (product) =>
-        product.subject === "DIY Projects" ||
-        product.subject === "Cloud Computing"
+        product.subject === "Database" || product.subject === "Cloud Computing"
     );
     const product_1 = filterdProducts.find(
       (p) => p.productID == selectedProductID
@@ -821,13 +799,13 @@ function xemchitiet(button) {
     speProductItem.querySelector(".product-title").innerText =
       "Tên :" + product_1.title;
     speProductItem.querySelector(".product-rating").innerText =
-      "Số sao :" + product_1.rating;
+      "Số sao :" + product_1.ratting;
     speProductItem.querySelector(".product-category").innerText =
       "Thể loại :" + product_1.subject;
     speProductItem.querySelector(".product-language").innerText =
       "Ngôn ngữ :" + product_1.language;
     speProductItem.querySelector(".product-pages").innerText =
-      "Số trang :" + product_1.page;
+      "Số trang :" + product_1.pages;
     speProductItem.querySelector(".cost").innerText = "Giá :" + product_1.price;
     speProductItem.querySelector(".product-des").innerText =
       product_1.description;
@@ -840,7 +818,8 @@ function xemchitiet(button) {
   } else if (list === "ACCHITECTURE_page") {
     const filterdProducts = products.filter(
       (product) =>
-        product.subject === "Web Development" || product.subject === "Marketing"
+        product.subject === "DIY Projects" ||
+        product.subject === "Software Architecture"
     );
     const product_1 = filterdProducts.find(
       (p) => p.productID == selectedProductID
@@ -852,13 +831,13 @@ function xemchitiet(button) {
     speProductItem.querySelector(".product-title").innerText =
       "Tên :" + product_1.title;
     speProductItem.querySelector(".product-rating").innerText =
-      "Số sao :" + product_1.rating;
+      "Số sao :" + product_1.ratting;
     speProductItem.querySelector(".product-category").innerText =
       "Thể loại :" + product_1.subject;
     speProductItem.querySelector(".product-language").innerText =
       "Ngôn ngữ :" + product_1.language;
     speProductItem.querySelector(".product-pages").innerText =
-      "Số trang :" + product_1.page;
+      "Số trang :" + product_1.pages;
     speProductItem.querySelector(".cost").innerText = "Giá :" + product_1.price;
     speProductItem.querySelector(".product-des").innerText =
       product_1.description;
@@ -994,7 +973,6 @@ function togglePaymentForm() {
 // Kiểm tra và xử lý đơn hàng khi người dùng nhấn "Xác nhận"
 function submitOrder(event) {
   event.preventDefault(); // Ngừng hành động gửi form mặc định
-  console.log("'submit");
   // Kiểm tra các trường bắt buộc trong form
   const addressOption = document.querySelector(
     'input[name="addressOption"]:checked'
@@ -1034,7 +1012,6 @@ function submitOrder(event) {
   closeOrderModal(); // Đóng modal sau khi gửi đơn
   // FIX
   const generateID = createIdGenerator();
-  const orders = getLocalStorage(KEY.ORDER);
   const order = {
     orderID: generateID(),
     userID: getLocalStorage("user").userId,
@@ -1045,7 +1022,6 @@ function submitOrder(event) {
     products: hoadon,
   };
   addOrderIntoDataBase(order);
-  console.log(getLocalStorage(KEY.ORDER));
   hoadon = [];
   xoatatca();
   addInvoice();
@@ -1074,7 +1050,7 @@ const ACCHITECTURE_productTemplate = document.querySelector(
 
 function Language_createProductList(products, targetId, startIndex) {
   const list = document.getElementById(targetId);
-  const endIndex = startIndex + 16;
+  const endIndex = startIndex + 8;
   const filterdProducts = products.filter(
     (product) =>
       product.subject === "Programming" || product.subject === "Hacking"
@@ -1220,7 +1196,7 @@ function setupPagination(products) {
     products.filter(
       (product) =>
         product.subject === "Programming" || product.subject === "Hacking"
-    ).length / 16
+    ).length / 8
   );
   const paginationList = document.querySelector(".Languages-pagination");
   // Làm sạch danh sách phân trang Languages hiện tại
@@ -1238,7 +1214,7 @@ function setupPagination(products) {
     const target = event.target;
     if (target.classList.contains("pagination-items")) {
       const page = parseInt(target.getAttribute("data-target"));
-      const startIndex = (page - 1) * 16;
+      const startIndex = (page - 1) * 8;
       Language_createProductList(products, "languages-list", startIndex);
 
       // Nổi bật trang hiện tại
@@ -1256,8 +1232,9 @@ function setupPagination_AI(products) {
   const totalPages_AI = Math.ceil(
     products.filter(
       (product) =>
-        product.subject === "Software Architecture" ||
-        product.subject === "Cybersecurity"
+        product.subject === "Cloud Computing" ||
+        product.subject === "Database" ||
+        product.subject === "Programming"
     ).length / 16
   );
   const paginationList_AI = document.querySelector(".AI-pagination");
@@ -1295,8 +1272,7 @@ function setupPagination_DATA(products) {
   const totalPages_DATA = Math.ceil(
     products.filter(
       (product) =>
-        product.subject === "DIY Projects" ||
-        product.subject === "Cloud Computing"
+        product.subject === "Database" || product.subject === "Cloud Computing"
     ).length / 16
   );
   const paginationList_DATA = document.querySelector(".DATA-pagination");
@@ -1334,7 +1310,8 @@ function setupPagination_ACCHITECTURE(products) {
   const totalPages_ACCHITECTURE = Math.ceil(
     products.filter(
       (product) =>
-        product.subject === "Web Development" || product.subject === "Marketing"
+        product.subject === "DIY Projects" ||
+        product.subject === "Software Architecture"
     ).length / 16
   );
   const paginationList_ACCHITECTURE = document.querySelector(
@@ -1390,7 +1367,7 @@ function sortProducts(products, sortType) {
   } else if (sortType === "down-cost") {
     sortedProducts.sort((a, b) => b.price - a.price); // Giá cao đến thấp Languages
   } else if (sortType === "review") {
-    sortedProducts.sort((a, b) => b.rating - a.rating); // Điểm đánh giá cao đến thấp Languages
+    sortedProducts.sort((a, b) => b.ratting - a.ratting); // Điểm đánh giá cao đến thấp Languages
   }
   Language_createProductList(sortedProducts, "languages-list", 0);
   setupPagination(sortedProducts);
@@ -1400,15 +1377,16 @@ function sortProducts(products, sortType) {
 function sortProducts_AI(products, sortType) {
   sortedProducts_AI = products.filter(
     (product) =>
-      product.subject === "Software Architecture" ||
-      product.subject === "Cybersecurity"
+      product.subject === "Cloud Computing" ||
+      product.subject === "Database" ||
+      product.subject === "Programming"
   );
   if (sortType === "up-cost") {
     sortedProducts_AI.sort((a, b) => a.price - b.price); // Giá thấp đến cao AI
   } else if (sortType === "down-cost") {
     sortedProducts_AI.sort((a, b) => b.price - a.price); // Giá cao đến thấp AI
   } else if (sortType === "review") {
-    sortedProducts_AI.sort((a, b) => b.rating - a.rating); // Điểm đánh giá cao đến thấp AI
+    sortedProducts_AI.sort((a, b) => b.ratting - a.ratting); // Điểm đánh giá cao đến thấp AI
   }
   AI_createProductList(sortedProducts_AI, "AI-list", 0);
   setupPagination_AI(sortedProducts_AI);
@@ -1418,15 +1396,14 @@ function sortProducts_AI(products, sortType) {
 function sortProducts_DATA(products, sortType) {
   sortedProducts_DATA = products.filter(
     (product) =>
-      product.subject === "DIY Projects" ||
-      product.subject === "Cloud Computing"
+      product.subject === "Database" || product.subject === "Cloud Computing"
   );
   if (sortType === "up-cost") {
     sortedProducts_DATA.sort((a, b) => a.price - b.price); // Giá thấp đến cao DATA
   } else if (sortType === "down-cost") {
     sortedProducts_DATA.sort((a, b) => b.price - a.price); // Giá cao đến thấp DATA
   } else if (sortType === "review") {
-    sortedProducts_DATA.sort((a, b) => b.rating - a.rating); // Điểm đánh giá cao đến thấp DATA
+    sortedProducts_DATA.sort((a, b) => b.ratting - a.ratting); // Điểm đánh giá cao đến thấp DATA
   }
   DATA_createProductList(sortedProducts_DATA, "DATA-list", 0);
   setupPagination_DATA(sortedProducts_DATA);
@@ -1436,14 +1413,15 @@ function sortProducts_DATA(products, sortType) {
 function sortProducts_ACCHITECTURE(products, sortType) {
   sortedProducts_ACCHITECTURE = products.filter(
     (product) =>
-      product.subject === "Web Development" || product.subject === "Marketing"
+      product.subject === "DIY Projects" ||
+      product.subject === "Software Architecture"
   );
   if (sortType === "up-cost") {
     sortedProducts_ACCHITECTURE.sort((a, b) => a.price - b.price); // Giá thấp đến cao ACCHITECTURE
   } else if (sortType === "down-cost") {
     sortedProducts_ACCHITECTURE.sort((a, b) => b.price - a.price); // Giá cao đến thấp ACCHITECTURE
   } else if (sortType === "review") {
-    sortedProducts_ACCHITECTURE.sort((a, b) => b.rating - a.rating); // Điểm đánh giá cao đến thấp ACCHITECTURE
+    sortedProducts_ACCHITECTURE.sort((a, b) => b.ratting - a.ratting); // Điểm đánh giá cao đến thấp ACCHITECTURE
   }
   ACCHITECTURE_createProductList(
     sortedProducts_ACCHITECTURE,
@@ -1573,8 +1551,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const users = getLocalStorage(KEY.USERS);
       const index = findIndexUserByEmail(currentUserEmail);
       const user = users[index];
-      console.log(currentUserEmail);
-      console.log(user);
       if (user) {
         user.phoneNumber = SDTInput.value;
         user.address = addressInput.value;
@@ -1624,9 +1600,16 @@ btnLogin.addEventListener("click", (e) => {
     return;
   }
   // Dang nhap Admin
-  const isAdmin = email === "admin@gmail.com" && password === "123456";
+  const admins = getLocalStorage(KEY.ADMINS);
+  const isAdmin = admins.find((admin) => admin.email === email);
   if (isAdmin) {
+    if (isAdmin.password !== password) {
+      alert("Mật khẩu không đúng. Vui lòng thử lại.");
+      inputPasswordLogin.focus();
+      return;
+    }
     window.location.replace("/admin/admin.html");
+    setLocalStorage("admin", isAdmin);
     return;
   }
   //
@@ -1640,13 +1623,18 @@ btnLogin.addEventListener("click", (e) => {
   }
   if (users[index].password !== password) {
     alert("Mật khẩu không đúng. Vui lòng thử lại.");
+    inputPasswordLogin.focus();
     return;
   }
 
   setLocalStorage("user", users[index]);
+  const user = getLocalStorage("user");
+  console.log(user.userId);
+  const orderOfUser = orders.filter((order) => order.userID === user.userId);
+  console.log(orderOfUser);
+  updateOrderHistory(orderOfUser);
   alert("Đăng nhập thành công!");
 
-  const user = getLocalStorage("user");
   currentUserEmail = user.email; // cập nhập biến toàn cục
   // Ẩn các liên kết Đăng nhập và Đăng ký, hiển thị Đăng xuất
   showLoginForm.style.display = "none";
@@ -1709,6 +1697,30 @@ logoutButton.addEventListener("click", () => {
   // Nếu cần, bạn có thể xóa dữ liệu phiên hoặc localStorage tại đây
 });
 // Hàm hiển thị/ẩn popup hóa đơn
+
+function updateOrderHistory(orders) {
+  const tableBody = document.querySelector("#invoiceTable tbody");
+  //  Tạo một hàng mới trong bảng lịch sử hóa đơn
+  // const orderIndex = hoadon.length; // Bắt đầu từ 1 thay vì 0
+  // const oderhoadon = orderCounter++;
+  const orderOfUser = orders
+    .map((order) => {
+      return `
+      <tr>
+    <td class="td-invoiceTable">Đơn Hàng ${order.orderID}</td>
+    <td class="td-invoiceTable">${order.status}</td>
+    <td class="td-invoiceTable">${order.createdAt}</td>
+    <td class="td-invoiceTable">${order.createdAt}</td>
+    <td class="td-invoiceTable">
+      <button onclick="viewOrderDetails('${order.orderID}')" class="button">Xem</button>
+    </td>
+  </tr>`;
+    })
+    .join("");
+  tableBody.innerHTML = orderOfUser;
+}
+
+let orderCounter = 1;
 function toggleInvoice() {
   const invoicePopup = document.getElementById("invoicePopup");
   invoicePopup.style.display =
@@ -1716,36 +1728,56 @@ function toggleInvoice() {
       ? "block"
       : "none";
 }
+
 // Hàm thêm hóa đơn vào bảng lịch sử hóa đơn
 function addInvoice() {
-  console.log("run invoice");
-  const tableBody = document.querySelector("#invoiceTable tbody");
-  const currentDate = new Date();
-  const date = currentDate.toLocaleDateString("vi-VN");
-  const time = currentDate.toLocaleTimeString("vi-VN");
-
-  // Duyệt qua giỏ hàng và thêm vào bảng hóa đơn
-  giohang.forEach((item, index) => {
-    const row = document.createElement("tr");
-
-    const quantity = hoadon[index].soLuong;
-    const totalPrice = item[2] * quantity;
-
-    row.innerHTML = `
-      <td class="td-invoiceTable">${item[0]}</td>
-      <td class="td-invoiceTable">${totalPrice.toLocaleString()}</td>
-      <td class="td-invoiceTable">${quantity}</td>
-      <td class="td-invoiceTable">${date}</td>
-      <td class="td-invoiceTable">${time}</td>
-    `;
-    tableBody.appendChild(row);
-  });
-
-  // Xóa giỏ hàng sau khi thêm vào lịch sử hóa đơn
+  const orders = getLocalStorage(KEY.ORDER);
+  const user = getLocalStorage("user");
+  const orderOfUser = orders.filter((order) => order.userID === user.userId);
+  updateOrderHistory(orderOfUser);
   giohang = [];
-  cartCount = 0;
-  updateCartCount();
   showmycart();
+  toggleInvoice();
+}
+
+// Hàm đóng modal
+function closeModal() {
+  document.getElementById("Modalorder").style.display = "none";
+}
+
+// Hàm hiển thị chi tiết hóa đơn
+function viewOrderDetails(orderID) {
+  const orders = getLocalStorage(KEY.ORDER);
+  const order = orders.find((order) => order.orderID === orderID);
+  const modal = document.getElementById("Modalorder");
+  const modalDetails = document.getElementById("modalOrderDetails");
+  const modalTotal = document.getElementById("modalTotal");
+
+  modal.style.display = "block";
+
+  // Hiển thị các sản phẩm trong đơn hàng
+  modalDetails.innerHTML = order.products
+    .map((item) => {
+      const product = findProductByID(item.id);
+      const total = parseInt(item.quantity) * parseInt(product.price);
+      return `
+              <tr>
+                <td>${product.title}</td>
+                <td>${product.price.toLocaleString()} VND</td>
+                <td>${item.quantity}</td>
+                <td>${total} VND</td>
+              </tr>
+        `;
+    })
+    .join("");
+
+  // Tính tổng giá trị đơn hàng
+  const total = order.products.reduce((intitValue, item) => {
+    const product = findProductByID(item.id);
+    const total = parseInt(item.quantity) * parseInt(product.price);
+    return intitValue + total;
+  }, 0);
+  modalTotal.textContent = total.toLocaleString() + " VND";
 }
 function updateQuantity(index, newQuantity) {
   newQuantity = parseInt(newQuantity); // Chuyển đổi giá trị từ input sang số nguyên

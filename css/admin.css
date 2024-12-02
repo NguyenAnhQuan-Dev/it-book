@@ -54,7 +54,7 @@
   font-size: 30px;
 }
 /* ------------ STYLE CSS OF SIDEBAR ---------- */
-#app #sidebar {
+#sidebar {
   width: 280px;
   height: 100vh;
   background-color: var(--suface-background);
@@ -89,7 +89,7 @@
   color: var(--text-primary-color);
 }
 
-#sidebar #sidebar__top .logo {
+#sidebar__top .logo {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -99,20 +99,26 @@
   overflow: hidden;
 }
 
-#sidebar #sidebar__top .logo span {
+#sidebar__top .logo span {
   color: var(--text-primary-color);
 }
 
-#sidebar #sidebar__top .logo i {
-  font-size: 30px;
-  cursor: pointer;
+#sidebar__top .logo img {
+  width: 60px;
+  object-fit: cover;
 }
 
-#sidebar #sidebar__top .nav {
+#sidebar__top .logo i {
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--text-primary-color);
+}
+
+#sidebar__top .nav {
   list-style: none;
 }
 
-#sidebar #sidebar__top .nav .nav__link {
+#sidebar__top .nav .nav__link {
   cursor: pointer;
   margin-bottom: var(--gap-lg);
   display: flex;
@@ -124,7 +130,7 @@
   color: var(--text-primary-color);
 }
 
-#sidebar #sidebar__top .nav .nav__link:hover {
+#sidebar__top .nav .nav__link:hover {
   color: var(--priamry-color);
   font-weight: 900;
 }
@@ -153,7 +159,7 @@
 } */
 
 /* ------------ STYLE CSS OF CONTENT ---------- */
-#app #content {
+#content {
   margin-left: 280px;
   width: calc(100% - 280px);
   padding: var(--gap-base);
@@ -170,7 +176,7 @@
 }
 
 /* --------- SECTION HOME CSS ---------- */
-#content #home {
+#home {
 }
 
 #home .time .input__date {
@@ -188,7 +194,7 @@
   margin: var(--gap-base) 0;
 }
 
-#home .time #btn__stats {
+#btn__stats {
   background-color: var(--priamry-color);
   color: white;
   padding: 8px 16px;
@@ -199,7 +205,7 @@
   transition: all 0.5s linear;
 }
 
-#home .time #btn__stats:hover {
+#btn__stats:hover {
   box-shadow: var(--shadown-card);
   transform: translate(-2px, -2px);
   transition: all 0.2s ease-in;
@@ -224,7 +230,7 @@
   cursor: pointer;
 }
 
-#content #home .stats {
+#home .stats {
   height: fit-content;
   list-style: none;
   display: flex;
@@ -299,11 +305,11 @@
 
 /* --------- SECTION ORDER CSS ---------- */
 
-#order #order__filter {
+#order__filter {
   margin: var(--gap-base) 0;
 }
 
-#order #order__filter .btn__filter {
+#order__filter .btn__filter {
   padding: 8px 12px;
   width: max-content;
   height: 40px;
@@ -319,7 +325,7 @@
   color: var(--text-primary-color);
 }
 
-#order #order__filter .btn__filter span {
+#order__filter .btn__filter span {
   font-weight: 500 !important;
 }
 
@@ -345,6 +351,10 @@
 
 .order__list .order__table .status.cancel {
   background-color: #aa82f1;
+}
+
+#order__action button {
+  display: inline-block;
 }
 
 /* ORDER DETAIL CSS */
@@ -414,13 +424,13 @@
 }
 
 /* --------- SECTION WAREHOUSE CSS ---------- */
-#content #warehouse {
+#warehouse {
 }
 
-#warehouse #warehouse__list {
+#warehouse__list {
 }
 
-#warehouse #warehouse__list .table__col img {
+#warehouse__list .table__col img {
   height: 80px;
   object-fit: cover;
 }
@@ -435,21 +445,31 @@
   margin-bottom: var(--gap-base);
 }
 
-.info__admin .info__field {
-  color: var(--text-primary-color);
+.info__admin .field {
   display: flex;
-  align-items: center;
-  justify-content: start;
-  margin-bottom: 20px;
+  color: var(--text-primary-color);
+  margin-bottom: var(--gap-base);
 }
 
-.info__field label {
-  width: 10ch;
+.field strong {
+  min-width: 20ch;
 }
 
-.info__field input {
-  padding: 4px 12px;
+#admin__update {
+  padding: 8px 12px;
+  background-color: var(--priamry-color);
+  color: #fff;
   border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#admin__modal .info__field {
+  display: flex;
+}
+
+#admin__modal .info__field label {
+  min-width: 20ch;
 }
 
 /* --------- CLASS GLOBAL ---------- */
@@ -536,7 +556,8 @@
   border-radius: 5px;
   cursor: pointer;
   font-size: 12px;
-  margin-left: var(--gap-lg);
+  margin-bottom: 4px;
+  /* margin-left: var(--gap-lg); */
 }
 
 .table img {
@@ -595,6 +616,9 @@
   .table .table__col::before {
     content: attr(data-cell);
     width: 15ch;
+  }
+  .table button {
+    margin-right: var(--gap-sm);
   }
   .open__sidebar {
     width: 280px !important;
@@ -699,6 +723,7 @@
   background-color: var(--suface-background);
   padding: 16px;
   overflow: hidden;
+  overflow-y: scroll;
   color: var(--text-primary-color);
 }
 
@@ -719,6 +744,10 @@
   height: auto;
   width: 60px;
   cursor: pointer;
+}
+
+.box-container .content .model__heading i {
+  color: var(--text-primary-color);
 }
 
 .box-container .content {
@@ -779,7 +808,7 @@
   margin-bottom: var(--gap-lg);
 }
 
-#filter__modal #filter__heading #filter__close {
+#filter__close {
   background-color: transparent;
   cursor: pointer;
   border: none;
@@ -788,11 +817,11 @@
   color: var(--text-primary-color);
 }
 
-#filter__modal #filter__form {
+#filter__form {
   margin-bottom: var(--gap-lg);
 }
 
-#filter__modal #filter__form .modal__filter {
+#filter__form .modal__filter {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -804,6 +833,10 @@
 }
 
 /* Order detail */
+
+#order__modal {
+  z-index: 50;
+}
 
 #order__form .list__product {
   list-style: none;
@@ -866,14 +899,89 @@
   text-align: center;
 }
 
+/* TOAST */
+
+.nofitication {
+  position: fixed;
+  z-index: 50;
+  top: 20px;
+  right: 20px;
+  width: max-content;
+  overflow: hidden;
+  color: var(--text-primary-color);
+}
+
+.nofitication .toast.success {
+  --color: var(--success-color);
+}
+
+.nofitication .toast.warning {
+  --color: var(--warning-color);
+}
+
+.nofitication .toast.error {
+  --color: var(--error-color);
+}
+
+.nofitication .toast {
+  width: max-content;
+  height: 40px;
+  padding: 12px;
+  color: var(--text-primary-color);
+  background-color: var(--suface-background);
+  box-shadow: inset var(--shadown-card);
+  display: flex;
+  gap: 20px;
+  position: relative;
+  animation: show 0.3s ease-in forwards;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.toast i {
+  font-size: 18px;
+  color: var(--color);
+}
+
+.toast p {
+  font-size: 16px;
+  color: var(--text-primary-color);
+}
+
+.toast::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color);
+  animation: timeOut 5s ease-in forwards;
+}
+
+@keyframes timeOut {
+  to {
+    width: 0px;
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   #header {
     display: flex;
   }
-  #sidebar #sidebar__top .logo i {
+  #sidebar__top .logo i {
     display: none;
   }
-  #app #sidebar .close__menu {
+  #sidebar .close__menu {
     display: flex !important;
   }
 }
@@ -891,7 +999,7 @@
   .box-container .content .modal__submit {
     flex-direction: row !important;
   }
-  #filter__modal #filter__form .modal__filter {
+  #filter__form .modal__filter {
     align-items: start;
   }
 }
